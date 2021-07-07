@@ -24,7 +24,7 @@ export default function ModalInfo(props) {
         <InfoIcon />
       </Button>
 
-      <Modal size={"lg"} centered={true} isOpen={modal} toggle={toggle}>
+      <Modal size={"md"} centered={true} isOpen={modal} toggle={toggle}>
         <ModalHeader style={{ backgroundColor: "#CED8D7" }} toggle={toggle}>
           {props.ModalTitle}
         </ModalHeader>

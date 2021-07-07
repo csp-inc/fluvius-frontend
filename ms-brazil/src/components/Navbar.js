@@ -171,7 +171,7 @@ export default function Navbar() {
             variant="h6"
             noWrap
           >
-            Connectivity Across U.S. Agricultural Lands{" "}
+            MS Brazil{" "}
             {/* <span style={{ color: "#DEF000"}}>BETA</span> */}
           </Typography>
 

@@ -10,40 +10,40 @@ import MapGL, {
 import mapboxgl from "mapbox-gl";
 
 import ControlPanel from './ControlPanel';
-// import Pins from './Pins';
-// import CityInfo from './City-info';
-// import CITIES from '../data/cities.json';
+import Pins from './Pins';
+import CityInfo from './City-info';
+import CITIES from '../data/cities.json';
 
-import MapStyle from "./MapStyle.json"
+import mapStyle from "./MapStyle.json"
 
-const TOKEN = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4M29iazA2Z2gycXA4N2pmbDZmangifQ.-g_vE53SD2WrJ6tFX7QHmA'; 
+const TOKEN = 'pk.eyJ1Ijoia212YW5uZXN0ZSIsImEiOiJja2puOTkzejEycnJzMnFwZ2hlYWptN3hlIn0.17FCOOngf5KK1Hs8BVmz7Q'; 
 
 // eslint-disable-next-line import/no-webpack-loader-syntax
 mapboxgl.workerClass = require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker").default;
 
-// const geolocateStyle = {
-//   top: 0,
-//   left: 0,
-//   padding: '10px'
-// };
+const geolocateStyle = {
+  top: 0,
+  left: 0,
+  padding: '10px'
+};
 
-// const fullscreenControlStyle = {
-//   top: 36,
-//   left: 0,
-//   padding: '10px'
-// };
+const fullscreenControlStyle = {
+  top: 36,
+  left: 0,
+  padding: '10px'
+};
 
-// const navStyle = {
-//   top: 72,
-//   left: 0,
-//   padding: '10px'
-// };
+const navStyle = {
+  top: 72,
+  left: 0,
+  padding: '10px'
+};
 
-// const scaleControlStyle = {
-//   bottom: 36,
-//   left: 0,
-//   padding: '10px'
-// };
+const scaleControlStyle = {
+  bottom: 36,
+  left: 0,
+  padding: '10px'
+};
 
 const Map = () => {
   const [viewport, setViewport] = useState({
@@ -53,9 +53,8 @@ const Map = () => {
     bearing: 0,
     pitch: 0
   });
-//   const [popupInfo, setPopupInfo] = useState(null);
+  const [popupInfo, setPopupInfo] = useState(null);
 
-  const [mapStyle, setMapStyle] = useState(MapStyle)
 
   return (
     <>
@@ -67,9 +66,9 @@ const Map = () => {
         onViewportChange={setViewport}
         mapboxApiAccessToken={TOKEN}
       >
-        {/* <Pins data={CITIES} onClick={setPopupInfo} /> */}
+        <Pins data={CITIES} onClick={setPopupInfo} />
 
-        {/* {popupInfo && (
+        {popupInfo && (
           <Popup
             tipSize={5}
             anchor="top"
@@ -80,12 +79,12 @@ const Map = () => {
           >
             <CityInfo info={popupInfo} />
           </Popup>
-        )} */}
+        )}
 
-        {/* <GeolocateControl style={geolocateStyle} />
+        <GeolocateControl style={geolocateStyle} />
         <FullscreenControl style={fullscreenControlStyle} />
         <NavigationControl style={navStyle} />
-        <ScaleControl style={scaleControlStyle} /> */}
+        <ScaleControl style={scaleControlStyle} />
       </MapGL>
 
       <ControlPanel />

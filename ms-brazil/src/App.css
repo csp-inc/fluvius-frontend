@@ -1,9 +1,9 @@
-body {
+/* body {
   margin: 0;
   background: #000;
 }
 #map {
-  width: 100vw;
+  width: 10vw;
   height: 100vh;
 }
 .control-panel {
@@ -20,4 +20,4 @@ body {
   color: #6b6b76;
   text-transform: uppercase;
   outline: none;
-}
+} */
