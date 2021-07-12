@@ -1,7 +1,6 @@
 import React from "react";
 import {AppBar, Toolbar, Typography, Link, Button, Popper, Grow, ClickAwayListener, Paper, MenuList, MenuItem} from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
-import MapModal from "../components/MapModal";
 import CopyUrlBtn from "../components/CopyUrlBtn";
 import BrazilRiver from "../images/Brazil_River.jpeg"
 
@@ -171,7 +170,7 @@ export default function Navbar() {
             variant="h6"
             noWrap
           >
-            MS Brazil{" "}
+            MS Brazil - EcoSheds{" "}
             {/* <span style={{ color: "#DEF000"}}>BETA</span> */}
           </Typography>
 
@@ -180,42 +179,6 @@ export default function Navbar() {
           </Typography>
 
           <CopyUrlBtn />
-
-          <MapModal
-            align="center"
-            ModalTitle={"About This Map"}
-            ModalBody={
-              <>
-                <p>
-                  Preserving animal movement pathways and linkages between areas
-                  of intact natural habitat is key to mitigating the current
-                  biodiversity crisis. At the same time, protecting the highest
-                  quality agricultural land is similarly critical to our
-                  long-term food security. Many species depend on agricultural
-                  landscapes for their movements between core habitat areas or
-                  for other fundamental ecological processes, such as breeding
-                  and foraging. By protecting key areas for animal movement
-                  through agricultural easements and other mechanisms, we can
-                  achieve the dual goals of maintaining connected habitats and
-                  safeguarding our working lands for future generations.
-                </p>
-                <p>
-                  In partnership with Microsoft Corporation and the American
-                  Farmland Trust, this project is utilizing contemporary,
-                  cutting-edge spatial data on agricultural land cover and use
-                  intensity to identify agricultural areas across the U.S. that
-                  are likely to provide important benefits to animals. We draw
-                  on concepts from electronic circuit theory to estimate
-                  landscape resistance to movement and map the likely pathways
-                  for species that depend on agricultural landscapes to connect
-                  their populations.
-                </p>
-              </>
-            }
-            modalImage={BrazilRiver}
-          >
-            About this Map
-          </MapModal>
         </Toolbar>
       </AppBar>
     </div>
