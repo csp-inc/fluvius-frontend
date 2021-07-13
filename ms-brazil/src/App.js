@@ -1,41 +1,46 @@
+import React, {useState, useEffect} from 'react'
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Map from "./components/Map";
 import MapStations from "./components/MapStations"
-import {Box} from "@material-ui/core";
-import { makeStyles } from '@material-ui/core/styles';
-import API from "./utils/API"
+import FluviusBox from "./components/FluviusBox"
+import {Box, Container} from "@material-ui/core";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    justifyContent: "center"
-  },
-}));
+import axios from 'axios';
 
 function App() {
-const classes = useStyles();
+  const [allData, setAllData]= useState([])
+  const [popupInfo, setPopupInfo] = useState();
+  const [selectedStation, setSelectedStation] = useState({});
+
+  useEffect(() => {
+    axios.get('https://fluviusdata.blob.core.windows.net/app/all_data.json')
+    .then(res=> {
+        setAllData(res.data);
+    })
+    .catch(err => {
+        console.log(err);
+    })
+})
 
   return (
     <div className="App">
       <Navbar />
       <Box display="flex" flexWrap="wrap" flexDirection="row" justifyContent="center" alignItems="center" >
         <Box md={6} sm={12} xs={12} flexGrow={1}>
-          <Map />
+          <Map allData={allData} popupInfo={popupInfo} setPopupInfo={setPopupInfo} />
         </Box>
 
         <Box item md={6} sm={12} xs={12} >
-          <MapStations />
+          <MapStations allData={allData} selectedStation={selectedStation} setSelectedStation={setSelectedStation}/>
         </Box>
       </Box>
 
       <Box display="flex" flexWrap="wrap" flexDirection="row" justifyContent="center" alignItems="center">
-        <Box md={6} sm={12} xs={12} flexGrow={1}>
-          <MapStations />
+        <Box flexGrow={1}>
+          <FluviusBox />
         </Box>
 
-        <Box md={6} sm={12} xs={12} flexGrow={1}>
-          <MapStations />
-        </Box>
       </Box>
     </div>
   );

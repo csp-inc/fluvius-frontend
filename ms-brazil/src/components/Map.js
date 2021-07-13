@@ -1,22 +1,14 @@
 import * as React from 'react';
-import {useState} from 'react';
-import MapGL, {
-  Popup,
-  NavigationControl,
-  FullscreenControl,
-  ScaleControl,
-  GeolocateControl
-} from 'react-map-gl';
+import {useState, useEffect} from 'react';
+import MapGL, { Popup, NavigationControl, FullscreenControl, ScaleControl, GeolocateControl} from 'react-map-gl';
 import mapboxgl from "mapbox-gl";
 
+//Components
 import ControlPanel from './MapControlPanel';
 import Pins from './MapPins';
-import CityInfo from './City-info';
-import CITIES from '../data/cities.json';
-import DATA from '../data/fluvius_data.json'
-
+import CityInfo from './Station-info';
 import mapStyle from "./MapStyle.json"
-import MapTitle from './MapTitle';
+// import MapTitle from './MapTitle';
 
 const TOKEN = 'pk.eyJ1Ijoia212YW5uZXN0ZSIsImEiOiJja2puOTkzejEycnJzMnFwZ2hlYWptN3hlIn0.17FCOOngf5KK1Hs8BVmz7Q'; 
 
@@ -47,35 +39,38 @@ const scaleControlStyle = {
   padding: '10px'
 };
 
-const Map = () => {
+const Map = (props) => {
   const [viewport, setViewport] = useState({
-    latitude: 40,
-    longitude: -100,
-    zoom: 3.5,
+    latitude: 20,
+    longitude: -80,
+    zoom: 2.45,
     bearing: 0,
     pitch: 0
   });
-  const [popupInfo, setPopupInfo] = useState(null);
 
+  const allData = props.allData
+  const setAllData = props.setAllData
+  const popupInfo = props.popupInfo
+  const setPopupInfo = props.setPopupInfo
 
   return (
     <>
       <MapGL
         {...viewport}
         width="100%"
-        height="600px"
+        height="650px"
         mapStyle={mapStyle}
         onViewportChange={setViewport}
         mapboxApiAccessToken={TOKEN}
       >
-        <Pins data={CITIES} onClick={setPopupInfo} />
+        <Pins data={allData} onClick={setPopupInfo} />
 
         {popupInfo && (
           <Popup
             tipSize={5}
             anchor="top"
-            longitude={popupInfo.longitude}
-            latitude={popupInfo.latitude}
+            longitude={popupInfo.Longitude}
+            latitude={popupInfo.Latitude}
             closeOnClick={false}
             onClose={setPopupInfo}
           >
@@ -88,7 +83,7 @@ const Map = () => {
         <NavigationControl style={navStyle} />
         <ScaleControl style={scaleControlStyle} />
 
-        <MapTitle title={'Map Title (make it station name?)'}/>
+        {/* <MapTitle title={'Map Title (make it station name?)'}/> */}
         <ControlPanel />
 
       </MapGL>

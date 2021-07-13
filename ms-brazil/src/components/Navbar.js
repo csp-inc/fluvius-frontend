@@ -2,7 +2,6 @@ import React from "react";
 import {AppBar, Toolbar, Typography, Link, Button, Popper, Grow, ClickAwayListener, Paper, MenuList, MenuItem} from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import CopyUrlBtn from "../components/CopyUrlBtn";
-import BrazilRiver from "../images/Brazil_River.jpeg"
 
 //Icons
 import MenuIcon from "@material-ui/icons/Menu";

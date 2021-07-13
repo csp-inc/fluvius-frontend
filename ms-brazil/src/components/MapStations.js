@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { InputLabel, FormControl, Select, Paper } from '@material-ui/core';
+import { InputLabel, FormControl, Select, Paper, Typography } from '@material-ui/core';
 import {makeStyles} from '@material-ui/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -10,37 +10,60 @@ const useStyles = makeStyles((theme) => ({
     selectEmpty: {
       marginTop: theme.spacing(2),
     },
-    paper: {
+    box: {
         minWidth: 600,
-        minHeight: 600,
-    }
+        minHeight: 650,
+    },
+    paper: {
+        padding: "35px",
+        marginTop: "-20px"
+  }
   }));
 
-const MapStations = () => {
+const MapStations = (props) => {
     const classes = useStyles();
-    const [station, setStation] = useState('');
+    const allData = props.allData;
+    const selectedStation = props.selectedStation;
+    const setSelectedStation = props.setSelectedStation;
 
   const handleChange = (event) => {
-    setStation(event.target.value);
+    setSelectedStation(event.target.value, console.log("event.target.value", console.log(event.target.value)))
   };
+
   return (
     <>
-    <Paper variant="outlined" elevation={3} className={classes.paper}>
+    <Paper variant="outlined" elevation={3} className={classes.box}>
       <FormControl variant="outlined" className={classes.formControl}>
         <InputLabel htmlFor="outlined-age-native-simple">Select a station:</InputLabel>
             <Select
                 id="selectBox"
                 native
-                value={station}
+                value={selectedStation}
                 onChange={handleChange}
                 label="Select a station"
             >
-            <option aria-label="None" value="" />
-            <option value={10}>Ten</option>
-            <option value={20}>Twenty</option>
-            <option value={30}>Thirty</option>
+              {allData.map((station, index) => (
+                 <option key={index} value={station}>{station.site_name}</option>
+              ))}
             </Select>
       </FormControl>
+
+      <Paper className={classes.paper} elevation={0}>
+      <Typography variant="body1">
+        Name: {selectedStation.site_name}
+        <hr></hr>
+        Description:
+        <hr></hr>
+        Latitude:
+        <hr></hr>
+        Longitude:
+        <hr></hr>
+        Summary:
+        <hr></hr>
+        Station Owner:
+      </Typography>
+      </Paper>
+
       </Paper>
     </>
   );
