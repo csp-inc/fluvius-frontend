@@ -6,7 +6,7 @@ import mapboxgl from "mapbox-gl";
 //Components
 import ControlPanel from './MapControlPanel';
 import Pins from './MapPins';
-import CityInfo from './Station-info';
+import StationInfo from './Station-info';
 import mapStyle from "./MapStyle.json"
 // import MapTitle from './MapTitle';
 
@@ -49,7 +49,6 @@ const Map = (props) => {
   });
 
   const allData = props.allData
-  const setAllData = props.setAllData
   const popupInfo = props.popupInfo
   const setPopupInfo = props.setPopupInfo
 
@@ -65,7 +64,7 @@ const Map = (props) => {
       >
         <Pins data={allData} onClick={setPopupInfo} />
 
-        {popupInfo && (
+        {popupInfo.longitude && (
           <Popup
             tipSize={5}
             anchor="top"
@@ -74,7 +73,7 @@ const Map = (props) => {
             closeOnClick={false}
             onClose={setPopupInfo}
           >
-            <CityInfo info={popupInfo} />
+            <StationInfo info={popupInfo.longitude} />
           </Popup>
         )}
 

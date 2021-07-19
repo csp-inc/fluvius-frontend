@@ -10,8 +10,8 @@ import axios from 'axios';
 
 function App() {
   const [allData, setAllData]= useState([])
-  const [popupInfo, setPopupInfo] = useState();
-  const [selectedStation, setSelectedStation] = useState({});
+  const [popupInfo, setPopupInfo] = useState({});
+  const [stationName, setStationName] = useState('');
 
   useEffect(() => {
     axios.get('https://fluviusdata.blob.core.windows.net/app/all_data.json')
@@ -21,6 +21,10 @@ function App() {
     .catch(err => {
         console.log(err);
     })
+
+    if (stationName !== '') {
+      setPopupInfo(allData.find( ({site_name}) => site_name === stationName )
+      )}  
 })
 
   return (
@@ -32,7 +36,7 @@ function App() {
         </Box>
 
         <Box item md={6} sm={12} xs={12} >
-          <MapStations allData={allData} selectedStation={selectedStation} setSelectedStation={setSelectedStation}/>
+          <MapStations allData={allData}  popupInfo={popupInfo} onClick={setStationName} stationName={stationName}  />
         </Box>
       </Box>
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-function CityInfo(props) {
+function StationInfo(props) {
   const {info} = props;
   const displayName = `${info.site_name}`;
 
@@ -13,4 +13,4 @@ function CityInfo(props) {
   );
 }
 
-export default React.memo(CityInfo);
+export default React.memo(StationInfo);
