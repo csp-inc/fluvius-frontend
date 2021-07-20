@@ -23,6 +23,10 @@ const useStyles = makeStyles((theme) => ({
 const MapStations = (props) => {
     const classes = useStyles();
     const {allData, popupInfo, setPopupInfo, onClick, stationName} = props;
+
+    ///TO GET THIS TO WORK WE NEED TO WRITE A PROMISE FOR ALLDATA.
+    //SET THE SELECT VALUE TO allData[0][0], but need to give it time to load before calling it otherwise app will crash!
+    //WHY ADDING THE DEFAULT VALUE WORKS
     
   const handleChange = (event) => {
     event.preventDefault();
@@ -40,7 +44,7 @@ const MapStations = (props) => {
             <Select
                 id="selectBox"
                 defaultValue={''}
-                value={stationName}
+                value={allData[0][0]}
                 onChange={handleChange}
                 label="Select a station"
             >
