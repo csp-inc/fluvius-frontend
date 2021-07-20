@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useMemo, useState} from "react";
 import { InputLabel, FormControl, Select, Paper, Typography, MenuItem } from '@material-ui/core';
 import {makeStyles} from '@material-ui/styles';
 
@@ -22,10 +22,13 @@ const useStyles = makeStyles((theme) => ({
 
 const MapStations = (props) => {
     const classes = useStyles();
-    const {allData, popupInfo, onClick, stationName} = props;
-
+    const {allData, popupInfo, setPopupInfo, onClick, stationName} = props;
+    
   const handleChange = (event) => {
+    event.preventDefault();
     console.log("event", console.log(event))
+    setPopupInfo(allData.find( ({site_name}) => site_name === event.target.value )
+    )
     onClick(event.target.value); 
   };
 
@@ -36,6 +39,7 @@ const MapStations = (props) => {
         <InputLabel htmlFor="outlined-age-native-simple">Select a station:</InputLabel>
             <Select
                 id="selectBox"
+                defaultValue={''}
                 value={stationName}
                 onChange={handleChange}
                 label="Select a station"
@@ -48,13 +52,13 @@ const MapStations = (props) => {
 
       <Paper className={classes.paper} elevation={0}>
       <Typography variant="body1">
-        Name: {popupInfo.site_name}
+        Name: &nbsp;&nbsp;&nbsp;<b>{popupInfo.site_name}</b>
         <hr></hr>
         Description: 
         <hr></hr>
-        Latitude: {popupInfo.Latitude}
+        Latitude: &nbsp;&nbsp;&nbsp;<b>{popupInfo.Latitude}</b>
         <hr></hr>
-        Longitude:
+        Longitude: &nbsp;&nbsp;&nbsp;<b>{popupInfo.Longitude}</b>
         <hr></hr>
         Summary:
         <hr></hr>

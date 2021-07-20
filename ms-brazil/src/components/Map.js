@@ -68,12 +68,12 @@ const Map = (props) => {
           <Popup
             tipSize={5}
             anchor="top"
-            longitude={popupInfo.Longitude}
-            latitude={popupInfo.Latitude}
+            longitude={popupInfo.longitude}
+            latitude={popupInfo.latitude}
             closeOnClick={false}
-            onClose={setPopupInfo}
+            onOpen={setPopupInfo}
           >
-            <StationInfo info={popupInfo.longitude} />
+            <StationInfo info={popupInfo.site_name} />
           </Popup>
         )}
 

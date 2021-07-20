@@ -22,10 +22,7 @@ function App() {
         console.log(err);
     })
 
-    if (stationName !== '') {
-      setPopupInfo(allData.find( ({site_name}) => site_name === stationName )
-      )}  
-})
+}, [popupInfo])
 
   return (
     <div className="App">
@@ -36,7 +33,7 @@ function App() {
         </Box>
 
         <Box item md={6} sm={12} xs={12} >
-          <MapStations allData={allData}  popupInfo={popupInfo} onClick={setStationName} stationName={stationName}  />
+          <MapStations allData={allData}  popupInfo={popupInfo} setPopupInfo={setPopupInfo} onClick={setStationName} stationName={stationName}  />
         </Box>
       </Box>
 

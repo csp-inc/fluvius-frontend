@@ -7,7 +7,7 @@ function StationInfo(props) {
   return (
     <div>
       <div style={{borderRadius: "5px", fontSize: "14px", padding: "3px", paddingTop: "8px"}}>
-        {displayName}
+        {info}
       </div>
     </div>
   );
