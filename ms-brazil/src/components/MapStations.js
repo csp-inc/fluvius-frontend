@@ -22,10 +22,8 @@ const useStyles = makeStyles((theme) => ({
 
 const MapStations = (props) => {
     const classes = useStyles();
-    const {allData, popupInfo, setPopupInfo, onClick, stationName} = props;
-    const [selectValue, setSelectValue] = useState('')
-
-
+    const {allData, popupInfo, setPopupInfo, onClick, selectValue, setSelectValue} = props;
+    // const [selectValue, setSelectValue] = useState('')
 
   async function loadAllData(stationName) {
       return setSelectValue(stationName); 
@@ -34,9 +32,9 @@ const MapStations = (props) => {
   const handleChange = (event) => {
     event.preventDefault();
     loadAllData(event.target.value);
-    console.log("event", console.log(event))
+    console.log("event.target.value", console.log(event.target.value))
     setPopupInfo(allData.find( ({site_name}) => site_name === event.target.value))
-    onClick(allData.find( ({site_name}) => site_name === event.target.value)); 
+    setSelectValue(allData.find( ({site_name}) => site_name === event.target.value)); 
   };
 
   return (

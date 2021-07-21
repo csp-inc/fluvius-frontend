@@ -2,7 +2,6 @@ import * as React from 'react';
 
 function StationInfo(props) {
   const {info} = props;
-  const displayName = `${info.site_name}`;
 
   return (
     <div>

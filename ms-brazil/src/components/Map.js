@@ -51,6 +51,8 @@ const Map = (props) => {
   const allData = props.allData
   const popupInfo = props.popupInfo
   const setPopupInfo = props.setPopupInfo
+  const selectValue = props.selectValue
+  const setSelectValue = props.setSelectValue
 
   return (
     <>
@@ -62,14 +64,15 @@ const Map = (props) => {
         onViewportChange={setViewport}
         mapboxApiAccessToken={TOKEN}
       >
-        <Pins data={allData} onClick={setPopupInfo} />
+        <Pins data={allData} onClick={setPopupInfo} onChange={setSelectValue} />
 
-        {popupInfo.longitude && (
+        {popupInfo.Longitude && (
           <Popup
             tipSize={5}
             anchor="top"
-            longitude={popupInfo.longitude}
-            latitude={popupInfo.latitude}
+            longitude={popupInfo.Longitude}
+            latitude={popupInfo.Latitude}
+            closeButton={false}
             closeOnClick={false}
             onOpen={setPopupInfo}
           >
