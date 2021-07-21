@@ -1,4 +1,4 @@
-import React, {useMemo, useState} from "react";
+import React, {useState} from "react";
 import { InputLabel, FormControl, Select, Paper, Typography, MenuItem } from '@material-ui/core';
 import {makeStyles} from '@material-ui/styles';
 
@@ -23,17 +23,20 @@ const useStyles = makeStyles((theme) => ({
 const MapStations = (props) => {
     const classes = useStyles();
     const {allData, popupInfo, setPopupInfo, onClick, stationName} = props;
+    const [selectValue, setSelectValue] = useState('')
 
-    ///TO GET THIS TO WORK WE NEED TO WRITE A PROMISE FOR ALLDATA.
-    //SET THE SELECT VALUE TO allData[0][0], but need to give it time to load before calling it otherwise app will crash!
-    //WHY ADDING THE DEFAULT VALUE WORKS
+
+
+  async function loadAllData(stationName) {
+      return setSelectValue(stationName); 
+  }
     
   const handleChange = (event) => {
     event.preventDefault();
+    loadAllData(event.target.value);
     console.log("event", console.log(event))
-    setPopupInfo(allData.find( ({site_name}) => site_name === event.target.value )
-    )
-    onClick(event.target.value); 
+    setPopupInfo(allData.find( ({site_name}) => site_name === event.target.value))
+    onClick(allData.find( ({site_name}) => site_name === event.target.value)); 
   };
 
   return (
@@ -44,7 +47,7 @@ const MapStations = (props) => {
             <Select
                 id="selectBox"
                 defaultValue={''}
-                value={allData[0][0]}
+                value={selectValue}
                 onChange={handleChange}
                 label="Select a station"
             >

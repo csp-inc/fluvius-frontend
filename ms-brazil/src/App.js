@@ -22,7 +22,7 @@ function App() {
         console.log(err);
     })
 
-}, [popupInfo])
+}, [popupInfo, allData])
 
   return (
     <div className="App">
@@ -33,7 +33,7 @@ function App() {
         </Box>
 
         <Box item md={6} sm={12} xs={12} >
-          <MapStations allData={allData}  popupInfo={popupInfo} setPopupInfo={setPopupInfo} onClick={setStationName} stationName={stationName}  />
+          <MapStations allData={allData}  popupInfo={popupInfo} setPopupInfo={setPopupInfo} onClick={setStationName} stationName={stationName} />
         </Box>
       </Box>
 
