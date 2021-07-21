@@ -51,7 +51,6 @@ const Map = (props) => {
   const allData = props.allData
   const popupInfo = props.popupInfo
   const setPopupInfo = props.setPopupInfo
-  const selectValue = props.selectValue
   const setSelectValue = props.setSelectValue
 
   return (

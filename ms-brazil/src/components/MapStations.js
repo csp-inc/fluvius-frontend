@@ -5,18 +5,21 @@ import {makeStyles} from '@material-ui/styles';
 const useStyles = makeStyles((theme) => ({
     formControl: {
       margin: theme.spacing(3),
-      width: 550,
+      width: '490px',
+      marginTop: '35px',
+      marginLeft: '25px',
+      marginRight: '25px'
     },
     selectEmpty: {
       marginTop: theme.spacing(2),
     },
     box: {
-        minWidth: 600,
+        minWidth: 500,
         minHeight: 650,
     },
-    paper: {
-        padding: "35px",
-        marginTop: "-20px"
+    stationDetails: {
+        width: "480px",
+        marginLeft: "30px",
   }
   }));
 
@@ -55,20 +58,20 @@ const MapStations = (props) => {
             </Select>
       </FormControl>
 
-      <Paper className={classes.paper} elevation={0}>
-      <Typography variant="body1">
-        Name: &nbsp;&nbsp;&nbsp;<b>{popupInfo.site_name}</b>
-        <hr></hr>
-        Description: 
-        <hr></hr>
-        Latitude: &nbsp;&nbsp;&nbsp;<b>{popupInfo.Latitude}</b>
-        <hr></hr>
-        Longitude: &nbsp;&nbsp;&nbsp;<b>{popupInfo.Longitude}</b>
-        <hr></hr>
-        Summary:
-        <hr></hr>
-        Station Owner:
-      </Typography>
+      <Paper className={classes.stationDetails} elevation={0}>
+          <Typography variant="body1">
+              Name: &nbsp;&nbsp;&nbsp;<b>{popupInfo.site_name}</b>
+              <hr></hr>
+              Description: 
+              <hr></hr>
+              Latitude: &nbsp;&nbsp;&nbsp;<b>{popupInfo.Latitude}</b>
+              <hr></hr>
+              Longitude: &nbsp;&nbsp;&nbsp;<b>{popupInfo.Longitude}</b>
+              <hr></hr>
+              Summary:
+              <hr></hr>
+              Station Owner:
+          </Typography>
       </Paper>
 
       </Paper>
