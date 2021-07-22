@@ -57,7 +57,7 @@ function App() {
 
       <Box display="flex" flexWrap="wrap" flexDirection="row" justifyContent="center" alignItems="center">
         <Box flexGrow={1}>
-          <FluviusBox />
+          <FluviusBox popupInfo={popupInfo}/>
         </Box>
 
       </Box>
