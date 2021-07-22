@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
 
 const MapStations = (props) => {
     const classes = useStyles();
-    const {allData, popupInfo, setPopupInfo, selectValue, setSelectValue} = props;
+    const {allData, popupInfo, setPopupInfo, selectValue, setSelectValue, onSelectStation} = props;
 
   async function loadAllData(stationName) {
       return setSelectValue(stationName); 
@@ -36,7 +36,8 @@ const MapStations = (props) => {
     loadAllData(event.target.value);
     console.log("event.target.value", console.log(event.target.value))
     setPopupInfo(allData.find( ({site_name}) => site_name === event.target.value))
-    setSelectValue(allData.find( ({site_name}) => site_name === event.target.value)); 
+    setSelectValue(allData.find( ({site_name}) => site_name === event.target.value))
+    onSelectStation(allData.find( ({site_name}) => site_name === event.target.value))
   };
 
   return (

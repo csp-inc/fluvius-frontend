@@ -40,28 +40,32 @@ const scaleControlStyle = {
 };
 
 const Map = (props) => {
-  const [viewport, setViewport] = useState({
-    latitude: 20,
-    longitude: -80,
-    zoom: 2.45,
-    bearing: 0,
-    pitch: 0
-  });
-
-  async function onSelectStation(pin) {
-    setViewport({
-      latitude: pin.Latitude,
-      longitude: pin.Longitude,
-      zoom: 8,
-      transitionInterpolator: new FlyToInterpolator({speed: 1.2}),
-      transitionDuration: 'auto'
-    })
-  };
-
   const allData = props.allData
   const popupInfo = props.popupInfo
   const setPopupInfo = props.setPopupInfo
   const setSelectValue = props.setSelectValue
+  const viewport = props.viewport
+  const setViewport = props.setViewport
+
+  // const [viewport, setViewport] = useState({
+  //   latitude: 20,
+  //   longitude: -80,
+  //   zoom: 2.45,
+  //   bearing: 0,
+  //   pitch: 0
+  // });
+
+  // async function onSelectStation(pin) {
+  //   setViewport({
+  //     latitude: pin.Latitude,
+  //     longitude: pin.Longitude,
+  //     zoom: 8,
+  //     transitionInterpolator: new FlyToInterpolator({speed: 1.2}),
+  //     transitionDuration: 'auto'
+  //   })
+  // };
+
+  const onSelectStation = props.onSelectStation
 
   return (
     <>
