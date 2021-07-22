@@ -25,8 +25,7 @@ const useStyles = makeStyles((theme) => ({
 
 const MapStations = (props) => {
     const classes = useStyles();
-    const {allData, popupInfo, setPopupInfo, onClick, selectValue, setSelectValue} = props;
-    // const [selectValue, setSelectValue] = useState('')
+    const {allData, popupInfo, setPopupInfo, selectValue, setSelectValue} = props;
 
   async function loadAllData(stationName) {
       return setSelectValue(stationName); 

@@ -21,15 +21,14 @@ function App() {
     .catch(err => {
         console.log(err);
     })
-
-}, [popupInfo, allData])
+}, [])
 
   return (
     <div className="App">
       <Navbar />
       <Box display="flex" flexWrap="wrap" flexDirection="row" justifyContent="center" alignItems="center" >
         <Box md={6} sm={12} xs={12} flexGrow={1}>
-          <Map allData={allData} popupInfo={popupInfo} setPopupInfo={setPopupInfo} />
+          <Map allData={allData} popupInfo={popupInfo} setPopupInfo={setPopupInfo} selectValue={selectValue} setSelectValue={setSelectValue}/>
         </Box>
 
         <Box item md={6} sm={12} xs={12} >

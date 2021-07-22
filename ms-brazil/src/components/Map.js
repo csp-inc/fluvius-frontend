@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {useState, useEffect} from 'react';
-import MapGL, { Popup, NavigationControl, FullscreenControl, ScaleControl, GeolocateControl} from 'react-map-gl';
+import {useState, useEffect, useCallback} from 'react';
+import MapGL, { Popup, NavigationControl, FullscreenControl, ScaleControl, GeolocateControl, FlyToInterpolator} from 'react-map-gl';
 import mapboxgl from "mapbox-gl";
 
 //Components
@@ -48,6 +48,16 @@ const Map = (props) => {
     pitch: 0
   });
 
+  async function onSelectStation(pin) {
+    setViewport({
+      latitude: pin.Latitude,
+      longitude: pin.Longitude,
+      zoom: 8,
+      transitionInterpolator: new FlyToInterpolator({speed: 1.2}),
+      transitionDuration: 'auto'
+    })
+  };
+
   const allData = props.allData
   const popupInfo = props.popupInfo
   const setPopupInfo = props.setPopupInfo
@@ -63,7 +73,7 @@ const Map = (props) => {
         onViewportChange={setViewport}
         mapboxApiAccessToken={TOKEN}
       >
-        <Pins data={allData} onClick={setPopupInfo} onChange={setSelectValue} />
+        <Pins data={allData} onClick={setPopupInfo} onChange={setSelectValue} onSelectStation={onSelectStation} />
 
         {popupInfo.Longitude && (
           <Popup

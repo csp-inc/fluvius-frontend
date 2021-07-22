@@ -9,7 +9,7 @@ const SIZE = 20;
 
 // Important for perf: the markers never change, avoid rerender when the map viewport changes
 function Pins(props) {
-  const {data, onClick, onChange} = props;
+  const {data, onClick, onChange, onSelectStation} = props;
 
   return data.map((station, index) => (
     <Marker key={index} longitude={station.Longitude} latitude={station.Latitude}>
@@ -22,9 +22,8 @@ function Pins(props) {
           stroke: 'none',
           transform: `translate(${-SIZE / 2}px,${-SIZE}px)`
         }}
-        onClick={() => onClick(station)}
+        onClick={() => {onSelectStation(station); onClick(station)}}
         onChange={() => onChange(station.site_name)}
-
       >
         <path d={ICON} />
       </svg>
