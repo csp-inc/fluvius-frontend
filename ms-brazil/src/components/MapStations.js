@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     },
     box: {
         minWidth: 500,
-        minHeight: 650,
+        minHeight: 575,
     },
     stationDetails: {
         width: "480px",

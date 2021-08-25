@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: "0px",
     paddingRight: "5px",
     margin: "-7px",
-    fontSize: "16px",
+    fontSize: "14px",
   },
 }));
 
@@ -120,31 +120,15 @@ export default function Navbar() {
                         onKeyDown={handleListKeyDown}
                         className={classes.MenuList}
                       >
-                        <MenuItem onClick={handleClose} disabled>
-                          <Link color="inherit" href="/project2">
+                        <MenuItem style={{fontSize: "15px"}} onClick={handleClose}>
+                          <Link color="inherit" href="https://github.com/csp-inc/fluvius">
                             <ExitToAppIcon
                               style={{ color: "rgb(246, 122, 55)" }}
                             />
-                            &nbsp; Connectivity on Agricultural Lands
+                            &nbsp; Fluvius GitHub Repository
                           </Link>
                         </MenuItem>
-                        <MenuItem onClick={handleClose}>
-                          <Link color="inherit" href="/project2">
-                            <ExitToAppIcon
-                              style={{ color: "rgb(246, 122, 55)" }}
-                            />
-                            &nbsp; Anthropogenic Impacts
-                          </Link>
-                        </MenuItem>
-                        <MenuItem onClick={handleClose}>
-                          <Link color="inherit" href="/project3">
-                            <ExitToAppIcon
-                              style={{ color: "rgb(246, 122, 55)" }}
-                            />
-                            &nbsp; Monitoring Forest Change
-                          </Link>
-                        </MenuItem>
-                        <MenuItem onClick={handleClose}>
+                        <MenuItem style={{fontSize: "15px"}} onClick={handleClose}>
                           <Link
                             color="inherit"
                             href="https://analytics-lab.org/ecosystemmonitoring/"
@@ -169,7 +153,7 @@ export default function Navbar() {
             variant="h6"
             noWrap
           >
-            MS Brazil - EcoSheds{" "}
+            Fluvius{" "}
             {/* <span style={{ color: "#DEF000"}}>BETA</span> */}
           </Typography>
 

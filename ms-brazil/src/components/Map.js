@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {useState, useEffect, useCallback} from 'react';
 import MapGL, { Popup, NavigationControl, FullscreenControl, ScaleControl, GeolocateControl, FlyToInterpolator} from 'react-map-gl';
 import mapboxgl from "mapbox-gl";
 
@@ -54,7 +53,7 @@ const Map = (props) => {
       <MapGL
         {...viewport}
         width="100%"
-        height="650px"
+        height="575px"
         mapStyle={mapStyle}
         onViewportChange={setViewport}
         mapboxApiAccessToken={TOKEN}
