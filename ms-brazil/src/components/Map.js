@@ -80,7 +80,7 @@ const Map = (props) => {
         <ScaleControl style={scaleControlStyle} />
 
         {/* <MapTitle title={'Map Title (make it station name?)'}/> */}
-        <ControlPanel />
+        {/* <ControlPanel /> */}
 
       </MapGL>
 
