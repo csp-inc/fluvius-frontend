@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {Paper, Typography, Box} from "@material-ui/core";
 import { InputLabel, FormControl, Select, MenuItem } from '@material-ui/core';
-
 import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer} from "recharts";
 import {makeStyles} from '@material-ui/styles';
+import Canvas from "./SatelliteCanvas";
 
 const useStyles = makeStyles((theme) => ({
   containerBox: {
@@ -40,30 +40,29 @@ const FluviusBox = (props) => {
   const [satellitePic, setSatellitePic] = useState('');
   
   const displayPictures = (event) => {
-    console.log(popupInfo);
-  //   let objectWithPicData = allData.find( ({Date}) => Date === event.activeLabel)
-  //   console.log(objectWithPicData)
+    let imageObject = allData.find( ({site_no}) => site_no === popupInfo.site_no)["img_data"]
 
+    let imageData = imageObject.find(({dateAndTime}) => dateAndTime === event.activeLabel) 
 
+    console.log("activeLabel", event.activeLabel)
+    console.log("imageObject", imageObject)
+    console.log("imageData", imageData)
 
+    // if (imageData["rgb_png_href"] !== cameraPic) {
+    //     setCameraPic(imageData["rgb_png_href"])
+    //   }
 
-    let imageData = allData.find( ({site_no}) => site_no === popupInfo.site_no)['img_data'].find(({dateAndTime}) => dateAndTime === event.activeLabel)
-
-    if (imageData === undefined) {
-      setCameraPic('');
-     } else {
-        setCameraPic(imageData["rgb_png_href"])
-      }
-
-    if (imageData === undefined) {
-      setSatellitePic('')
-      } else {
-        setSatellitePic(imageData["scl_png_href"])
-      }
-
-
+    if (typeof imageData !== 'undefined') {
+      setCameraPic(imageData["rgb_png_href"])
+      setSatellitePic(imageData["scl_png_href"])
+    }
+   
   }
- 
+
+  useEffect(() => {
+    
+  }, [cameraPic, satellitePic])
+
   return (
     <>
       <Box
@@ -170,7 +169,11 @@ const FluviusBox = (props) => {
                   </img>
               </Paper>
               <Paper>
-                  
+                {/* {
+                  console.log("test pic", popupInfo['img_data'][0]['rgb_png_href'])
+                }
+                <img src={popupInfo['img_data'][2]['rgb_png_href']} alt="test picture" /> */}
+                <Canvas />
               </Paper>
           </Box>
       </Box>
