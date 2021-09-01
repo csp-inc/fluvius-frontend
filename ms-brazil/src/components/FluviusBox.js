@@ -47,12 +47,6 @@ const FluviusBox = (props) => {
       setCameraPic(imageData["rgb_png_href"])
       setSatellitePic(imageData["scl_png_href"])
     }
-
-    // if (typeof imageData !== 'undefined' && typeof event.activeLabel !== undefined) {
-    //   console.lof("activeLabel 2", event.activeLabel)
-    //   setCameraPic(imageData["rgb_png_href"])
-    //   setSatellitePic(imageData["scl_png_href"])
-    // }
    
   }
 
@@ -163,11 +157,9 @@ const FluviusBox = (props) => {
               <Paper>
                   <img style={{marginRight: "10px"}} src={cameraPic} alt="Camera Trap Photo" width="400px" height="400px">
                   </img>
-                  <img src={satellitePic} alt="Satellite Image" width="400px" height="400px">
-                  </img>
+                  <Canvas satellitePic={satellitePic} />
               </Paper>
               <Paper>
-                <Canvas satellitePic={satellitePic} />
               </Paper>
           </Box>
 
