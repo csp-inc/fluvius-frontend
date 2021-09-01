@@ -18,3 +18,9 @@
 #selectBox {
   width: 100%;
 }
+
+.footer {
+  background-color: #636466;
+  height: "40px";
+  width: "sw";
+}

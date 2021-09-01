@@ -41,21 +41,18 @@ const FluviusBox = (props) => {
   
   const displayPictures = (event) => {
     let imageObject = allData.find( ({site_no}) => site_no === popupInfo.site_no)["img_data"]
+    let imageData = imageObject.find((item) => item['Date.Time'] === event.activeLabel) || '' || undefined
 
-    let imageData = imageObject.find(({dateAndTime}) => dateAndTime === event.activeLabel) 
-
-    console.log("activeLabel", event.activeLabel)
-    console.log("imageObject", imageObject)
-    console.log("imageData", imageData)
-
-    // if (imageData["rgb_png_href"] !== cameraPic) {
-    //     setCameraPic(imageData["rgb_png_href"])
-    //   }
-
-    if (typeof imageData !== 'undefined') {
+    if (typeof imageData !== 'undefined' && typeof event.activeLabel !== undefined) {
       setCameraPic(imageData["rgb_png_href"])
       setSatellitePic(imageData["scl_png_href"])
     }
+
+    // if (typeof imageData !== 'undefined' && typeof event.activeLabel !== undefined) {
+    //   console.lof("activeLabel 2", event.activeLabel)
+    //   setCameraPic(imageData["rgb_png_href"])
+    //   setSatellitePic(imageData["scl_png_href"])
+    // }
    
   }
 
@@ -71,10 +68,9 @@ const FluviusBox = (props) => {
         flexDirection="row"
         justifyContent="center"
         className={classes.containerBox}
-        // style={{borderRight: "150px solid #636466", borderLeft: "150px solid #636466"}}
       >
 
-        <Box style={{ minWidth: "500px" }}>
+        <Box flexGrow={0} style={{ minWidth: "500px" }}>
           <Typography>Daily Timeseries</Typography>
           <ResponsiveContainer width="100%" height={210}>
           <LineChart
@@ -148,7 +144,8 @@ const FluviusBox = (props) => {
 
 
         {/* Form Select and Images */}
-          <Box style={{ minWidth: "500px", height: "400px", paddingLeft: "25px" }}>
+          <Box flexGrow={0} style={{ minWidth: "500px", paddingLeft: "30px" }}>
+            <Box>
               <FormControl variant="outlined" className={classes.formControl}>
                     <InputLabel htmlFor="outlined-age-native-simple">Select a variable:</InputLabel>
                         <Select
@@ -162,20 +159,19 @@ const FluviusBox = (props) => {
                             <MenuItem value={"Stage"}>Stage</MenuItem>
                         </Select>
               </FormControl>
+              </Box>
               <Paper>
-                  <img style={{marginRight: "10px", marginLeft: "5px"}} src={cameraPic} alt="Camera Trap Photo" width="240px" height="240px">
+                  <img style={{marginRight: "10px"}} src={cameraPic} alt="Camera Trap Photo" width="400px" height="400px">
                   </img>
-                  <img src={satellitePic} alt="Satellite Image" width="240px" height="240px">
+                  <img src={satellitePic} alt="Satellite Image" width="400px" height="400px">
                   </img>
               </Paper>
               <Paper>
-                {/* {
-                  console.log("test pic", popupInfo['img_data'][0]['rgb_png_href'])
-                }
-                <img src={popupInfo['img_data'][2]['rgb_png_href']} alt="test picture" /> */}
-                <Canvas />
+                <Canvas satellitePic={satellitePic} />
               </Paper>
           </Box>
+
+          
       </Box>
     </>
   );

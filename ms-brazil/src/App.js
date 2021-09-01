@@ -4,7 +4,7 @@ import Navbar from "./components/Navbar";
 import Map from "./components/Map";
 import MapStations from "./components/MapStations"
 import FluviusBox from "./components/FluviusBox"
-import {Box, Container} from "@material-ui/core";
+import {Box, Container, Paper} from "@material-ui/core";
 import {FlyToInterpolator} from 'react-map-gl';
 
 import axios from 'axios';
@@ -50,20 +50,19 @@ function App() {
           <Map allData={allData} popupInfo={popupInfo} setPopupInfo={setPopupInfo} selectValue={selectValue} setSelectValue={setSelectValue} viewport={viewport} setViewport={setViewport} onSelectStation={onSelectStation}/>
         </Box>
 
-        <Box item md={6} sm={12} xs={12} >
+        <Box item md={6} sm={12} xs={12} flexGrow={0}>
           <MapStations allData={allData}  popupInfo={popupInfo} setPopupInfo={setPopupInfo}  selectValue={selectValue} setSelectValue={setSelectValue} onSelectStation={onSelectStation}/>
         </Box>
       </Box>
 
       <Box display="flex" flexWrap="wrap" flexDirection="row" justifyContent="center" alignItems="center">
-        <Box flexGrow={1}>  
           <FluviusBox allData={allData} popupInfo={popupInfo}/>
-        </Box>
       </Box>
 
-      <footer>
-            <div style={{backgroundColor: "#636466", height: "40px", width: "sw"}}></div>
-      </footer>
+      <Box  className="footer">
+          {/* <div style={{backgroundColor: "#636466", height: "40px", width: "sw"}}></div> */}
+      </Box>
+
     </div>
   );
 }
