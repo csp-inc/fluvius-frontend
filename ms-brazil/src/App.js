@@ -58,9 +58,12 @@ function App() {
       <Box display="flex" flexWrap="wrap" flexDirection="row" justifyContent="center" alignItems="center">
           <FluviusBox allData={allData} popupInfo={popupInfo}/>
       </Box>
+      <br></br>
+      <br></br>
+      <br></br>
 
-      <Box  className="footer">
-          {/* <div style={{backgroundColor: "#636466", height: "40px", width: "sw"}}></div> */}
+      <Box>
+          <div style={{backgroundColor: "#636466", height: "40px", width: "sw"}}></div>
       </Box>
 
     </div>

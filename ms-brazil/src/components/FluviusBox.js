@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
   },
   formControl: {
     // margin: theme.spacing(3),
-    width: '500px',
+    width: '100%',
     marginTop: '5px',
     marginBottom: "10px"
   },
@@ -64,9 +64,9 @@ const FluviusBox = (props) => {
         className={classes.containerBox}
       >
 
-        <Box flexGrow={0} style={{ minWidth: "500px" }}>
+        <Box flexGrow={0} style={{ minWidth: "550px" }}>
           <Typography>Daily Timeseries</Typography>
-          <ResponsiveContainer width="100%" height={210}>
+          <ResponsiveContainer width="100%" height={235}>
           <LineChart
             width={580}
             height={220}
@@ -89,7 +89,7 @@ const FluviusBox = (props) => {
         </ResponsiveContainer>
 
         <Typography>SSC</Typography>
-        <ResponsiveContainer width="100%" height={210}>
+        <ResponsiveContainer width="100%" height={235}>
           <LineChart
             width={580}
             height={220}
@@ -101,6 +101,8 @@ const FluviusBox = (props) => {
               left: 0,
               bottom: 0,
             }}
+            onMouseMove={displayPictures}
+
           >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="Date.Time" />
@@ -111,7 +113,7 @@ const FluviusBox = (props) => {
         </ResponsiveContainer>
 
         <Typography>RGB</Typography>
-        <ResponsiveContainer width="100%" height={210}>
+        <ResponsiveContainer width="100%" height={235}>
           <LineChart
             width={580}
             height={220}
@@ -123,6 +125,8 @@ const FluviusBox = (props) => {
               left: 0,
               bottom: 0,
             }}
+            onMouseMove={displayPictures}
+
           >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="Date.Time" />
@@ -138,7 +142,7 @@ const FluviusBox = (props) => {
 
 
         {/* Form Select and Images */}
-          <Box flexGrow={0} style={{ minWidth: "500px", paddingLeft: "30px" }}>
+          <Box flexGrow={0} style={{ minWidth: "500px", paddingLeft: "50px" }}>
             <Box>
               <FormControl variant="outlined" className={classes.formControl}>
                     <InputLabel htmlFor="outlined-age-native-simple">Select a variable:</InputLabel>
@@ -155,15 +159,16 @@ const FluviusBox = (props) => {
               </FormControl>
               </Box>
               <Paper>
-                  <img style={{marginRight: "10px"}} src={cameraPic} alt="Camera Trap Photo" width="400px" height="400px">
+                  <img style={{marginRight: "10px"}} src={cameraPic} alt="Camera Trap Photo" width="420px" height="420px">
                   </img>
                   <Canvas satellitePic={satellitePic} />
+
               </Paper>
               <Paper>
               </Paper>
           </Box>
 
-          
+
       </Box>
     </>
   );
