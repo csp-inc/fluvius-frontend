@@ -153,7 +153,7 @@ export default function Navbar() {
             variant="h6"
             noWrap
           >
-            Fluvius{" "}
+            Project Fluvius - Data Visualization{" "}
             {/* <span style={{ color: "#DEF000"}}>BETA</span> */}
           </Typography>
 

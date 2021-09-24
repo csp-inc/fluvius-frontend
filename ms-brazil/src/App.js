@@ -12,6 +12,7 @@ import axios from 'axios';
 function App() {
   const [allData, setAllData]= useState([])
   const [popupInfo, setPopupInfo] = useState({});
+
   const [selectValue, setSelectValue] = useState('')
 
   const [viewport, setViewport] = useState({
@@ -33,7 +34,7 @@ function App() {
   };
 
   useEffect(() => {
-    axios.get('https://fluviusdata.blob.core.windows.net/app/all_data.json')
+    axios.get('https://fluviusdata.blob.core.windows.net/app/all_data_v2.json')
     .then(res=> {
         setAllData(res.data);
     })
