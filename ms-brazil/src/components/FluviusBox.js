@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {Paper, Typography, Box} from "@material-ui/core";
-import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer} from "recharts";
+import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Label} from "recharts";
 import {makeStyles} from '@material-ui/styles';
 import Canvas from "./SatelliteCanvas";
 
@@ -68,48 +68,57 @@ const FluviusBox = (props) => {
       >
 
         <Box flexGrow={0} style={{ minWidth: "550px" }}>
-          <Typography>Daily Timeseries</Typography>
-          <ResponsiveContainer width="100%" height={235}>
+          <Typography>Discharge at Station {popupInfo.site_name}</Typography>
+          <ResponsiveContainer width="100%" height={250}>
           <LineChart
             width={580}
             height={220}
             data={data}
             syncId="anyId"
             margin={{
-              top: 10,
-              right: 30,
-              left: 0,
-              bottom: 0,
+              top: 20,
+              right: 20,
+              left: 10,
+              bottom: 20,
             }}
             onMouseMove={displayPictures}
           >
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="sample_date" />
-            <YAxis />
+            <XAxis dataKey="sample_date" >
+              <Label value="Date" offset={-8} position="insideBottom" />
+            </XAxis>
+            <YAxis >
+              <Label value="Discharge (m³/s)" angle={-90} offset={15} position="insideBottomLeft" />
+            </YAxis>
             <Tooltip />
             <Line type="monotone" dataKey="Q.m3.s" stroke="transparent" fill="#004983" activeDot={{ r: 8 }} />
           </LineChart>
         </ResponsiveContainer>
 
-        <Typography>SSC</Typography>
-        <ResponsiveContainer width="100%" height={235}>
+        <Typography>Suspended Sediment Concentration at Station {popupInfo.site_name}</Typography>
+        <ResponsiveContainer width="100%" height={250}>
           <LineChart
             width={580}
             height={220}
             data={data}
             syncId="anyId"
             margin={{
-              top: 10,
-              right: 30,
-              left: 0,
-              bottom: 0,
+              top: 20,
+              right: 20,
+              left: 10,
+              bottom: 20,
             }}
             onMouseMove={displayPictures}
 
           >
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="sample_date" />
-            <YAxis />
+            <XAxis dataKey="sample_date" >
+              <Label value="Date" offset={-8} position="insideBottom" />
+            </XAxis>
+            <YAxis>
+            <Label value="SSC (mg/L)" angle={-90} offset={15} position="insideBottomLeft" />
+
+              </YAxis> 
             <Tooltip />
             <Line type="monotone" dataKey="SSC.mg.L" stroke="transparent" fill="#597d35" />
           </LineChart>
@@ -147,13 +156,9 @@ const FluviusBox = (props) => {
         {/* Form Select and Images */}
           <Box flexGrow={0} style={{ minWidth: "500px", paddingLeft: "50px" }}>
 
-              <Paper>
+              <Paper elevation="0">
                 <br></br>
-                <body>Satellite Images:</body>
                 <br></br>
-              </Paper>
-
-              <Paper>
                   <img style={{marginRight: "10px"}} src={cameraPic} alt="Camera Trap Photo" width="900px" height="450px">
                   </img>
                   {/* <Canvas satellitePic={satellitePic} /> */}
