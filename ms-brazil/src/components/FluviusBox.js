@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import {Paper, Typography, Box} from "@material-ui/core";
 import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Label} from "recharts";
 import {makeStyles} from '@material-ui/styles';
+import {Radio, RadioGroup, FormControl, FormLabel, FormControlLabel} from '@material-ui/core';
 import Canvas from "./SatelliteCanvas";
 
 const useStyles = makeStyles((theme) => ({
@@ -36,7 +37,10 @@ const FluviusBox = (props) => {
   };
 
   const [cameraPic, setCameraPic] = useState('');
+  const [cirPic, setCirPic] = useState('');
+  const [swirPic, setSwirPic] = useState('');
   const [satellitePic, setSatellitePic] = useState('');
+  const [radioValue, setRadioValue] = useState('')
   
   const displayPictures = (event) => {
     let imageObject = allData.find( ({site_no}) => site_no === popupInfo.site_no)["sample_data"]
@@ -45,17 +49,21 @@ const FluviusBox = (props) => {
     let imageData = imageObject.find((item) => item['sample_date'] === event.activeLabel) || '' || undefined
     console.log("imageData", imageData)
 
-
     if (typeof imageData !== 'undefined' && typeof event.activeLabel !== undefined) {
       setCameraPic(imageData["rgb_water_chip_href"])
+      setCirPic(imageData["cir_water_chip_href"])
+      setSwirPic(imageData["swir_water_chip_href"])
       setSatellitePic(imageData["scl_png_href"])
     }
-   
   }
+
+  const handleRadioChange = (event) => {
+    setRadioValue(event.target.value);
+  };
 
   useEffect(() => {
     
-  }, [cameraPic, satellitePic])
+  }, [cameraPic, cirPic, swirPic, satellitePic])
 
   return (
     <>
@@ -123,33 +131,6 @@ const FluviusBox = (props) => {
             <Line type="monotone" dataKey="SSC.mg.L" stroke="transparent" fill="#597d35" />
           </LineChart>
         </ResponsiveContainer>
-
-        {/* <Typography>RGB</Typography>
-        <ResponsiveContainer width="100%" height={235}>
-          <LineChart
-            width={580}
-            height={220}
-            data={data}
-            syncId="anyId"
-            margin={{
-              top: 10,
-              right: 30,
-              left: 0,
-              bottom: 0,
-            }}
-            onMouseMove={displayPictures}
-
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="Date.Time" />
-            <YAxis />
-            <Tooltip />
-            <Line type="monotone" dataKey="sentinel.2.l2a_R" stroke="#ff0000" fill="#FF0000" />
-            <Line type="monotone" dataKey="sentinel.2.l2a_G" stroke="#00ff00" fill="#00ff00" />
-            <Line type="monotone" dataKey="sentinel.2.l2a_B" stroke="#0000ff" fill="#0000ff" />
-
-          </LineChart>
-        </ResponsiveContainer> */}
         </Box>
 
 
@@ -158,9 +139,26 @@ const FluviusBox = (props) => {
 
               <Paper elevation="0">
                 <br></br>
+                <FormControl component="fieldset">
+                  <FormLabel component="legend">Color Composite</FormLabel>
+                  <RadioGroup row aria-label="color composite" name="row-radio-buttons-group" onChange={handleRadioChange}>
+                    <FormControlLabel value="rgb" control={<Radio />} label="Natural Color" />
+                    <FormControlLabel value="cir" control={<Radio />} label="Color Infrared" />
+                    <FormControlLabel value="swir" control={<Radio />} label="Short-wave Infrared" />
+                  </RadioGroup>
+                </FormControl>                
                 <br></br>
-                  <img style={{marginRight: "10px"}} src={cameraPic} alt="Camera Trap Photo" width="900px" height="450px">
-                  </img>
+                {radioValue === "rgb" && (
+                  <img style={{marginRight: "10px"}} src={radioValue === "rgb" ? cameraPic : "Select a station and hover over the graph to see images."} alt="Camera Trap Photo" width="900px" height="450px" /> 
+                )}
+
+                {radioValue === "cir" && (
+                  <img style={{marginRight: "10px"}} src={radioValue === "cir" ? cirPic : "Select a station and hover over the graph to see images."} alt="Camera Trap Photo" width="900px" height="450px" />
+                )}
+
+                {radioValue === "swir" && (
+                  <img style={{marginRight: "10px"}} src={radioValue === "swir" ? swirPic : "Select a station and hover over the graph to see images."} alt="Camera Trap Photo" width="900px" height="450px" />
+                )}
                   {/* <Canvas satellitePic={satellitePic} /> */}
 
               </Paper>
