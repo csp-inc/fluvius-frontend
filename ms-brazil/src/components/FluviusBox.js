@@ -133,10 +133,7 @@ const FluviusBox = (props) => {
         </ResponsiveContainer>
         </Box>
 
-
-        {/* Form Select and Images */}
-          <Box flexGrow={0} style={{ minWidth: "500px", paddingLeft: "50px" }}>
-
+        <Box flexGrow={0} style={{ minWidth: "500px", paddingLeft: "50px" }}>
               <Paper elevation="0">
                 <br></br>
                 <FormControl component="fieldset">
@@ -148,6 +145,13 @@ const FluviusBox = (props) => {
                   </RadioGroup>
                 </FormControl>                
                 <br></br>
+                {radioValue === "" && (
+                  <>
+                  <br></br>
+                  {/* <p>Select a station to view graph data.</p> */}
+                  </>
+                )}
+
                 {radioValue === "rgb" && (
                   <img style={{marginRight: "10px"}} src={radioValue === "rgb" ? cameraPic : "Select a station and hover over the graph to see images."} alt="Camera Trap Photo" width="900px" height="450px" /> 
                 )}
