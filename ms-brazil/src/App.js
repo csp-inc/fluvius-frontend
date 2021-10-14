@@ -4,7 +4,7 @@ import Navbar from "./components/Navbar";
 import Map from "./components/Map";
 import MapStations from "./components/MapStations"
 import FluviusBox from "./components/FluviusBox"
-import {Box, Container, Paper} from "@material-ui/core";
+import {Box, Container, Paper, Typography} from "@material-ui/core";
 import {FlyToInterpolator} from 'react-map-gl';
 
 import axios from 'axios';
@@ -12,9 +12,8 @@ import axios from 'axios';
 function App() {
   const [allData, setAllData]= useState([])
   const [popupInfo, setPopupInfo] = useState({});
-
+  console.log("popupInfo", popupInfo);
   const [selectValue, setSelectValue] = useState('')
-
   const [viewport, setViewport] = useState({
     latitude: 20,
     longitude: -80,
@@ -56,16 +55,23 @@ function App() {
         </Box>
       </Box>
 
-      <Box display="flex" flexWrap="wrap" flexDirection="row" justifyContent="center" alignItems="center">
-          <FluviusBox allData={allData} popupInfo={popupInfo}/>
-      </Box>
-      <br></br>
-      <br></br>
-      <br></br>
+      {Object.keys(popupInfo).length === 0 && (
+          <Box display="flex" flexWrap="wrap" flexDirection="row" justifyContent="center" alignItems="center">
+              <p>Select a station by clicking a red marker on the map or from the dropdown menu.</p>
+          </Box>
+      )}
 
-      {/* <Box>
-          <div style={{backgroundColor: "#636466", height: "40px", width: "sw"}}></div>
-      </Box> */}
+      {Object.keys(popupInfo).length !== 0 && (
+          <Box display="flex" flexWrap="wrap" flexDirection="row" justifyContent="center" alignItems="center">
+              <FluviusBox allData={allData} popupInfo={popupInfo}/>
+          </Box>
+      )}
+
+      {/* 
+      <Box display="flex" flexDirection="row" >
+          <div style={{backgroundColor: "#636466", height: "40px", width: "sw", }}></div>
+      </Box> 
+      */}
 
     </div>
   );
