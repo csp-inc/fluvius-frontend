@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import {Paper, Typography, Box} from "@material-ui/core";
-import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Label} from "recharts";
+import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Label} from "recharts";
 import {makeStyles} from '@material-ui/styles';
 import {Radio, RadioGroup, FormControl, FormLabel, FormControlLabel} from '@material-ui/core';
-import Canvas from "./SatelliteCanvas";
+// import Canvas from "./SatelliteCanvas";
 import moment from 'moment'
 
 const useStyles = makeStyles((theme) => ({
@@ -42,16 +42,6 @@ const FluviusBox = (props) => {
   const [swirPic, setSwirPic] = useState('');
   const [satellitePic, setSatellitePic] = useState('');
   const [radioValue, setRadioValue] = useState('')
-  const [imageData, setImageData] = useState({
-    "Q.m3.s": "202.343",
-    "SSC.mg.L": "32.4",
-    "cir_water_chip_href": "https://fluviusdata.blob.core.windows.net/app/img/cir_and_lulcndvi_water/ana_28240000_00000023_2019-03-05.png",
-    "rgb_water_chip_href": "https://fluviusdata.blob.core.windows.net/app/img/rgb_and_lulcndvi_water/ana_28240000_00000023_2019-03-05.png",
-    "sample_date": "2019-03-05",
-    "sample_id": "28240000_00000023",
-    "swir_water_chip_href": "https://fluviusdata.blob.core.windows.net/app/img/swir_and_lulcndvi_water/ana_28240000_00000023_2019-03-05.png",
-  })
-
  
   const displayPictures = (event) => {
     let imageObject = allData.find( ({site_no}) => site_no === popupInfo.site_no)["sample_data"]
