@@ -41,7 +41,7 @@ const FluviusBox = (props) => {
   const [cirPic, setCirPic] = useState('');
   const [swirPic, setSwirPic] = useState('');
   const [satellitePic, setSatellitePic] = useState('');
-  const [radioValue, setRadioValue] = useState('')
+  const [radioValue, setRadioValue] = useState('rgb')
  
   const displayPictures = (event) => {
     let imageObject = allData.find( ({site_no}) => site_no === popupInfo.site_no)["sample_data"]
@@ -140,7 +140,7 @@ const FluviusBox = (props) => {
                 <br></br>
                 <FormControl component="fieldset">
                   <FormLabel component="legend">Color Composite</FormLabel>
-                  <RadioGroup row aria-label="color composite" name="row-radio-buttons-group" onChange={handleRadioChange}>
+                  <RadioGroup row aria-label="color composite" name="row-radio-buttons-group" defaultValue="rgb" onChange={handleRadioChange}>
                     <FormControlLabel value="rgb" control={<Radio />} label="Natural Color" />
                     <FormControlLabel value="cir" control={<Radio />} label="Color Infrared" />
                     <FormControlLabel value="swir" control={<Radio />} label="Short-wave Infrared" />
@@ -150,7 +150,6 @@ const FluviusBox = (props) => {
                 {radioValue === "" && (
                   <>
                   <br></br>
-                  {/* <p>Select a station to view graph data.</p> */}
                   </>
                 )}
 

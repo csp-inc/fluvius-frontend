@@ -12,7 +12,6 @@ import axios from 'axios';
 function App() {
   const [allData, setAllData]= useState([])
   const [popupInfo, setPopupInfo] = useState({});
-  console.log("popupInfo", popupInfo);
   const [selectValue, setSelectValue] = useState('')
   const [viewport, setViewport] = useState({
     latitude: 20,
