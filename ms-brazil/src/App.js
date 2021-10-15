@@ -13,6 +13,10 @@ function App() {
   const [allData, setAllData]= useState([])
   const [popupInfo, setPopupInfo] = useState({});
   const [selectValue, setSelectValue] = useState('')
+  const [cameraPic, setCameraPic] = useState('');
+  const [cirPic, setCirPic] = useState('');
+  const [swirPic, setSwirPic] = useState('');
+  const [satellitePic, setSatellitePic] = useState('');
   const [viewport, setViewport] = useState({
     latitude: 20,
     longitude: -80,
@@ -30,6 +34,13 @@ function App() {
       transitionDuration: 'auto'
     })
   };
+
+  useEffect(() => {
+    setCameraPic('');
+    setCirPic('');
+    setSwirPic('');
+    setSatellitePic('');
+  }, [popupInfo])
 
   useEffect(() => {
     axios.get('https://fluviusdata.blob.core.windows.net/app/all_data_v2.json')
@@ -62,7 +73,7 @@ function App() {
 
       {Object.keys(popupInfo).length !== 0 && (
           <Box display="flex" flexWrap="wrap" flexDirection="row" justifyContent="center" alignItems="center">
-              <FluviusBox allData={allData} popupInfo={popupInfo}/>
+              <FluviusBox allData={allData} popupInfo={popupInfo} cameraPic={cameraPic} setCameraPic={setCameraPic} cirPic={cirPic} setCirPic={setCirPic} swirPic={swirPic} setSwirPic={setSwirPic} satellitePic={satellitePic} setSatellitePic={setSatellitePic}/>
           </Box>
       )}
 

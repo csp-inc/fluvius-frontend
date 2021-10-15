@@ -30,19 +30,22 @@ const FluviusBox = (props) => {
   const data = props.popupInfo["sample_data"];
   const allData = props.allData;
   const popupInfo = props.popupInfo;
+  const cameraPic = props.cameraPic
+  const setCameraPic = props.setCameraPic;
+  const cirPic = props.cirPic;
+  const setCirPic = props.setCirPic;
+  const swirPic = props.swirPic;
+  const setSwirPic = props.setSwirPic;
+  const satellitePic = props.satellitePic;
+  const setSatellitePic = props.setSatellitePic;
 
   const [variable, setVariable] = React.useState('');
+  const [radioValue, setRadioValue] = useState('rgb')
 
   const handleChange = (event) => {
     setVariable(event.target.value);
   };
 
-  const [cameraPic, setCameraPic] = useState('');
-  const [cirPic, setCirPic] = useState('');
-  const [swirPic, setSwirPic] = useState('');
-  const [satellitePic, setSatellitePic] = useState('');
-  const [radioValue, setRadioValue] = useState('rgb')
- 
   const displayPictures = (event) => {
     let imageObject = allData.find( ({site_no}) => site_no === popupInfo.site_no)["sample_data"]
     console.log("imageObject", imageObject)
