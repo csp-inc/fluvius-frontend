@@ -3,12 +3,28 @@ import { InputLabel, FormControl, Select, Paper, Typography, MenuItem } from '@m
 import {makeStyles} from '@material-ui/styles';
 
 const useStyles = makeStyles((theme) => ({
-    formControl: {
+  formControlPaper: {
+    backgroundColor: "#f2f2f2"
+  },  
+  formControl: {
       margin: theme.spacing(3),
       width: '490px',
       marginTop: '35px',
       marginLeft: '25px',
-      marginRight: '25px'
+      marginRight: '25px',
+    },
+    darkLabel: {
+      color: '#0f0',
+    },
+    darkUnderline: {
+      '&:hover:not($disabled):before': {
+        backgroundColor: '#040',    
+      },
+    },
+    darkInkbar: {
+      '&:after': {
+        backgroundColor: '#0f0',    
+      },
     },
     selectEmpty: {
       marginTop: theme.spacing(2),
@@ -16,10 +32,15 @@ const useStyles = makeStyles((theme) => ({
     box: {
         minWidth: 500,
         minHeight: 575,
+        backgroundColor: "black"
     },
     stationDetails: {
-        width: "480px",
+        width: "430px",
         marginLeft: "30px",
+        color: "white",
+        fontWeight: 800,
+        padding: "25px",
+        backgroundColor: "black"
   }
   }));
 
@@ -42,8 +63,9 @@ const MapStations = (props) => {
 
   return (
     <>
-    <Paper variant="outlined" elevation={3} className={classes.box}>
-      <FormControl variant="outlined" className={classes.formControl}>
+    <Paper elevation={3} className={classes.box}>
+      <Paper className={classes.formControlPaper}>
+      <FormControl variant="outlined" FormControlClasses={{ focused: classes.darkLabel }} className={classes.formControl}>
         <InputLabel htmlFor="outlined-age-native-simple">Select a station:</InputLabel>
             <Select
                 id="selectBox"
@@ -57,8 +79,10 @@ const MapStations = (props) => {
               ))}
             </Select>
       </FormControl>
+      </Paper>
 
       <Paper className={classes.stationDetails} elevation={0}>
+        <br></br>
           <Typography variant="body1">
               Name: &nbsp;&nbsp;&nbsp;<b>{popupInfo.site_name}</b>
               <hr></hr>
@@ -71,9 +95,7 @@ const MapStations = (props) => {
               Station Owner:  &nbsp;&nbsp;&nbsp;<b>{popupInfo.region}</b>
               <hr></hr>
           </Typography>
-      </Paper>
-
-      <Paper className={classes.stationDetails} elevation={0}>
+          <br></br>
           <Typography variant="body1">
             <br></br>
                 <b>Project Overview:</b>

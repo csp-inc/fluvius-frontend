@@ -8,20 +8,15 @@ import moment from 'moment'
 
 const useStyles = makeStyles((theme) => ({
   containerBox: {
-    padding: "20px",
-    height: "730px",
-    backgroundColor: "#ffffff"
+    padding: "10px",
+    backgroundColor: "#000000",
+    color: "white"
   },
   formControl: {
     // margin: theme.spacing(3),
     width: '100%',
     marginTop: '5px',
     marginBottom: "10px"
-  },
-  photoBox: {
-    padding: "10px",
-      minWidth: 500,
-      minHeight: 575,
   },
 }));
 
@@ -80,7 +75,7 @@ const FluviusBox = (props) => {
         className={classes.containerBox}
       >
 
-        <Box flexGrow={0} style={{ minWidth: "550px" }}>
+        <Box flexGrow={0} style={{ minWidth: "550px", backgroundColor: "white", color: "black", borderRadius: "5px", padding: "15px", marginBottom: "10px"  }}>
           <Typography>Discharge at Station {popupInfo.site_name}</Typography>
           <ResponsiveContainer width="100%" height={250}>
           <LineChart
@@ -122,24 +117,21 @@ const FluviusBox = (props) => {
               bottom: 20,
             }}
             onMouseMove={displayPictures}
-
           >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="sample_timestamp" domain={['auto', 'auto']} tickFormatter={(timestamp) => moment(timestamp).format('MMM YY')} type='number' scale="time" >
-              <Label value="Date" offset={-8} position="insideBottom" />
+              <Label value="Date" offset={-8} position="insideBottom" style={{color: "white"}}/>
             </XAxis>
             <YAxis>
-            <Label value="SSC (mg/L)" angle={-90} offset={15} position="insideBottomLeft" />
-
-              </YAxis> 
+              <Label value="SSC (mg/L)" angle={-90} offset={15} position="insideBottomLeft" />
+            </YAxis> 
             <Tooltip />
             <Line type="monotone" dataKey="SSC.mg.L" stroke="transparent" fill="#597d35" />
           </LineChart>
         </ResponsiveContainer>
         </Box>
 
-        <Box flexGrow={0} style={{ minWidth: "500px", paddingLeft: "50px" }}>
-              <Paper elevation="0">
+        <Box flexGrow={0} style={{padding: "15px", backgroundColor: "white", color: "black", borderRadius: "5px", marginLeft: "10px", marginBottom: "10px", }}>
                 <br></br>
                 <FormControl component="fieldset">
                   <FormLabel component="legend">Color Composite</FormLabel>
@@ -157,19 +149,18 @@ const FluviusBox = (props) => {
                 )}
 
                 {radioValue === "rgb" && (
-                  <img style={{marginRight: "10px"}} src={radioValue === "rgb" ? cameraPic : "Select a station and hover over the graph to see images."} alt="Camera Trap Photo" width="900px" height="450px" /> 
+                  <img src={radioValue === "rgb" ? cameraPic : "Select a station and hover over the graph to see images."} alt="Camera Trap Photo" width="850px" height="425px" /> 
                 )}
 
                 {radioValue === "cir" && (
-                  <img style={{marginRight: "10px"}} src={radioValue === "cir" ? cirPic : "Select a station and hover over the graph to see images."} alt="Camera Trap Photo" width="900px" height="450px" />
+                  <img src={radioValue === "cir" ? cirPic : "Select a station and hover over the graph to see images."} alt="Camera Trap Photo" width="850px" height="425px" />
                 )}
 
                 {radioValue === "swir" && (
-                  <img style={{marginRight: "10px"}} src={radioValue === "swir" ? swirPic : "Select a station and hover over the graph to see images."} alt="Camera Trap Photo" width="900px" height="450px" />
+                  <img src={radioValue === "swir" ? swirPic : "Select a station and hover over the graph to see images."} alt="Camera Trap Photo" width="850px" height="425px" />
                 )}
                   {/* <Canvas satellitePic={satellitePic} /> */}
 
-              </Paper>
 
           </Box>
 
