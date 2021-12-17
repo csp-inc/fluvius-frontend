@@ -66,7 +66,7 @@ function App() {
       </Box>
 
       {Object.keys(popupInfo).length === 0 && (
-          <Box display="flex" flexWrap="wrap" flexDirection="row" justifyContent="center" alignItems="center">
+          <Box display="flex" flexWrap="wrap" flexDirection="row" justifyContent="center" alignItems="center" style={{color: "white"}}>
               <p>Select a station by clicking a red marker on the map or from the dropdown menu.</p>
           </Box>
       )}

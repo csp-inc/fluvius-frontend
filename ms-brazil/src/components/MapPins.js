@@ -19,7 +19,8 @@ function Pins(props) {
         style={{
           cursor: 'pointer',
           fill: '#d00',
-          stroke: 'none',
+          stroke: 'black',
+          strokeWidth: 3,
           transform: `translate(${-SIZE / 2}px,${-SIZE}px)`
         }}
         onClick={() => {onSelectStation(station); onClick(station)}}
