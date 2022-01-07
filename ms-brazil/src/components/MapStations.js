@@ -4,26 +4,32 @@ import {makeStyles} from '@material-ui/styles';
 
 const useStyles = makeStyles((theme) => ({
   formControlPaper: {
-    backgroundColor: "#f2f2f2"
+    backgroundColor: "#000000"
   },  
   formControl: {
       margin: theme.spacing(3),
       width: '490px',
-      marginTop: '35px',
+      marginTop: '45px',
       marginLeft: '25px',
       marginRight: '25px',
+      marginBottom: '-15px',
+      backgroundColor: "#000",
+      color: "#fff"
     },
     darkLabel: {
-      color: '#0f0',
+      backgroundColor: "#000",
+      color: '#fff',
     },
     darkUnderline: {
       '&:hover:not($disabled):before': {
-        backgroundColor: '#040',    
+        backgroundColor: '#000', 
+        color: "#fff"   
       },
     },
     darkInkbar: {
       '&:after': {
-        backgroundColor: '#0f0',    
+        backgroundColor: '#000',
+        color: "#fff"    
       },
     },
     selectEmpty: {
@@ -65,14 +71,15 @@ const MapStations = (props) => {
     <>
     <Paper elevation={3} className={classes.box}>
       <Paper className={classes.formControlPaper}>
-      <FormControl variant="outlined" FormControlClasses={{ focused: classes.darkLabel }} className={classes.formControl}>
-        <InputLabel htmlFor="outlined-age-native-simple">Select a station:</InputLabel>
+      <FormControl color="primary" variant="filled" FormControlClasses={{ focused: classes.darkLabel }} className={classes.formControl}>
+        <InputLabel style={{color: "black"}} htmlFor="outlined-age-native-simple">Select a station:</InputLabel>
             <Select
                 id="selectBox"
                 defaultValue={''}
                 value={selectValue}
                 onChange={handleChange}
                 label="Select a station"
+                style={{backgroundColor: "white"}}
             >
               {allData.map((station, index) => (
                  <MenuItem key={index} value={station.site_name}>{station.site_name}</MenuItem>

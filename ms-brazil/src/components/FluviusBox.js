@@ -18,11 +18,15 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '5px',
     marginBottom: "10px"
   },
+  graphTitle: {
+    marginBottom: "20px"
+  }
 }));
 
 const FluviusBox = (props) => {
   const classes = useStyles();
   const data = props.popupInfo["sample_data"];
+  console.log("data", data);
   const allData = props.allData;
   const popupInfo = props.popupInfo;
   const cameraPic = props.cameraPic
@@ -35,7 +39,7 @@ const FluviusBox = (props) => {
   const setSatellitePic = props.setSatellitePic;
 
   const [variable, setVariable] = React.useState('');
-  const [radioValue, setRadioValue] = useState('rgb')
+  const [radioValue, setRadioValue] = useState('rgb');
 
   const handleChange = (event) => {
     setVariable(event.target.value);
@@ -64,6 +68,7 @@ const FluviusBox = (props) => {
     
   }, [cameraPic, cirPic, swirPic, satellitePic])
 
+  const dateFormatter = item => moment(item).format("MMM DD");
 
   return (
     <>
@@ -75,35 +80,35 @@ const FluviusBox = (props) => {
         className={classes.containerBox}
       >
 
-        <Box flexGrow={0} style={{ minWidth: "550px", backgroundColor: "white", color: "black", borderRadius: "5px", padding: "15px", marginBottom: "10px"  }}>
-          <Typography>Discharge at Station {popupInfo.site_name}</Typography>
-          <ResponsiveContainer width="100%" height={250}>
+        <Box flexGrow={0} style={{ minWidth: "550px", backgroundColor: "black", color: "white", borderRadius: "5px", padding: "15px", marginBottom: "10px"  }}>
+          <Typography className={classes.graphTitle}>Discharge at Station {popupInfo.site_name}</Typography>
+          <ResponsiveContainer width="100%" height={250} >
           <LineChart
             width={580}
             height={220}
             data={data}
             syncId="anyId"
             margin={{
-              top: 20,
-              right: 20,
+              top: 0,
+              right: 25,
               left: 10,
-              bottom: 20,
+              bottom: 30,
             }}
             onMouseMove={displayPictures}
           >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="sample_timestamp" domain={['auto', 'auto']} tickFormatter={(timestamp) => moment(timestamp).format('MMM YY')} type='number' scale="time" >
-              <Label value="Date" offset={-8} position="insideBottom" />
+              <Label value="Date" offset={-15} position="insideBottom" />
             </XAxis>
             <YAxis >
               <Label value="Discharge (m³/s)" angle={-90} offset={15} position="insideBottomLeft" />
             </YAxis>
-            <Tooltip />
-            <Line type="monotone" dataKey="Q.m3.s" stroke="transparent" fill="#004983" activeDot={{ r: 8 }} />
+            <Line type="monotone" dataKey="Q.m3.s" stroke="transparent" fill="#def001" activeDot={{ r: 8 }} />
+            <Tooltip labelFormatter={dateFormatter}/>
           </LineChart>
         </ResponsiveContainer>
 
-        <Typography>Suspended Sediment Concentration at Station {popupInfo.site_name}</Typography>
+        <Typography className={classes.graphTitle}>Suspended Sediment Concentration at Station {popupInfo.site_name}</Typography>
         <ResponsiveContainer width="100%" height={250}>
           <LineChart
             width={580}
@@ -111,8 +116,8 @@ const FluviusBox = (props) => {
             data={data}
             syncId="anyId"
             margin={{
-              top: 20,
-              right: 20,
+              top: 0,
+              right: 25,
               left: 10,
               bottom: 20,
             }}
@@ -120,25 +125,25 @@ const FluviusBox = (props) => {
           >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="sample_timestamp" domain={['auto', 'auto']} tickFormatter={(timestamp) => moment(timestamp).format('MMM YY')} type='number' scale="time" >
-              <Label value="Date" offset={-8} position="insideBottom" style={{color: "white"}}/>
+              <Label value="Date" offset={-15} position="insideBottom" style={{color: "white"}}/>
             </XAxis>
             <YAxis>
               <Label value="SSC (mg/L)" angle={-90} offset={15} position="insideBottomLeft" />
             </YAxis> 
-            <Tooltip />
-            <Line type="monotone" dataKey="SSC.mg.L" stroke="transparent" fill="#597d35" />
+            <Line type="monotone" dataKey="SSC.mg.L" stroke="transparent" fill="#def001"  activeDot={{ r: 8 }}/>
+            <Tooltip labelFormatter={dateFormatter} />
           </LineChart>
         </ResponsiveContainer>
         </Box>
 
-        <Box flexGrow={0} style={{padding: "15px", backgroundColor: "white", color: "black", borderRadius: "5px", marginLeft: "10px", marginBottom: "10px", }}>
+        <Box flexGrow={0} style={{padding: "15px", backgroundColor: "black", color: "white", borderRadius: "5px", marginLeft: "10px", marginBottom: "10px", }}>
                 <br></br>
-                <FormControl component="fieldset">
-                  <FormLabel component="legend">Color Composite</FormLabel>
+                <FormControl component="fieldset" style={{color: "white", marginTop: "10px", marginBottom: "10px"}}>
+                  <FormLabel component="legend" style={{color: "white"}}>Color Composite</FormLabel>
                   <RadioGroup row aria-label="color composite" name="row-radio-buttons-group" defaultValue="rgb" onChange={handleRadioChange}>
-                    <FormControlLabel value="rgb" control={<Radio />} label="Natural Color" />
-                    <FormControlLabel value="cir" control={<Radio />} label="Color Infrared" />
-                    <FormControlLabel value="swir" control={<Radio />} label="Short-wave Infrared" />
+                    <FormControlLabel value="rgb" control={<Radio style={{color: "#def001"}} />} label="Natural Color" />
+                    <FormControlLabel value="cir" control={<Radio style={{color: "#def001"}} />} label="Color Infrared" />
+                    <FormControlLabel value="swir" control={<Radio style={{color: "#def001"}} />} label="Short-wave Infrared" />
                   </RadioGroup>
                 </FormControl>                
                 <br></br>
