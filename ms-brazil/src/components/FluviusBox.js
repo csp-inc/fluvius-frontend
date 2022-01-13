@@ -72,7 +72,7 @@ const FluviusBox = (props) => {
     if (active && payload && payload.length) {
     return (
       <div className='customTooltip'>
-        <p>{payload[0].value} mg/L</p>
+        <p>{Number.parseFloat(payload[0].value).toFixed(1)} mg/L</p>
       </div>
     )
     }
@@ -86,7 +86,7 @@ const FluviusBox = (props) => {
     if (active && payload && payload.length) {
     return (
       <div className='customTooltip'>
-        <p>{payload[0].value} m³/s</p>
+        <p>{Number.parseFloat(payload[0].value).toFixed(1)} m³/s</p>
       </div>
     )
     }
