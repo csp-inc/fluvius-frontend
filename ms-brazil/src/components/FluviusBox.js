@@ -47,10 +47,7 @@ const FluviusBox = (props) => {
 
   const displayPictures = (event) => {
     let imageObject = allData.find( ({site_no}) => site_no === popupInfo.site_no)["sample_data"]
-    console.log("imageObject", imageObject)
-
     let imageData = imageObject.find((item) => item['sample_timestamp'] === event.activeLabel) || '' || undefined
-    console.log("imageData", imageData)
 
     if (typeof imageData !== 'undefined' && typeof event.activeLabel !== undefined) {
       setCameraPic(imageData["rgb_water_chip_href"])
@@ -65,10 +62,37 @@ const FluviusBox = (props) => {
   };
 
   useEffect(() => {
-    
   }, [cameraPic, cirPic, swirPic, satellitePic])
 
   const dateFormatter = item => moment(item).format("MMM DD");
+  
+  const CustomTooltip = ({ active, payload, label }) => {
+    console.log("payload", payload);
+    console.log("label", label);
+    if (active && payload && payload.length) {
+    return (
+      <div className='customTooltip'>
+        <p>{payload[0].value} mg/L</p>
+      </div>
+    )
+    }
+
+    return null;
+  }
+
+  const CustomTooltip2 = ({ active, payload, label }) => {
+    console.log("payload", payload);
+    console.log("label", label);
+    if (active && payload && payload.length) {
+    return (
+      <div className='customTooltip'>
+        <p>{payload[0].value} m³/s</p>
+      </div>
+    )
+    }
+
+    return null;
+  }
 
   return (
     <>
@@ -104,7 +128,7 @@ const FluviusBox = (props) => {
               <Label value="Discharge (m³/s)" angle={-90} offset={15} position="insideBottomLeft" />
             </YAxis>
             <Line type="monotone" dataKey="Q.m3.s" stroke="transparent" fill="#def001" activeDot={{ r: 8 }} />
-            <Tooltip labelFormatter={dateFormatter}/>
+            <Tooltip content={<CustomTooltip2 />}/>
           </LineChart>
         </ResponsiveContainer>
 
@@ -131,7 +155,7 @@ const FluviusBox = (props) => {
               <Label value="SSC (mg/L)" angle={-90} offset={15} position="insideBottomLeft" />
             </YAxis> 
             <Line type="monotone" dataKey="SSC.mg.L" stroke="transparent" fill="#def001"  activeDot={{ r: 8 }}/>
-            <Tooltip labelFormatter={dateFormatter} />
+            <Tooltip content={<CustomTooltip />} labelFormatter={dateFormatter} />
           </LineChart>
         </ResponsiveContainer>
         </Box>
