@@ -123,7 +123,7 @@ const FluviusBox = (props) => {
             onMouseMove={displayPictures}
           >
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="sample_timestamp" domain={['auto', 'auto']} tickFormatter={(timestamp) => moment(timestamp).format('MMM YY')} type='number' scale="time" >
+            <XAxis ticks={[1420156800000, 1451777744000, 1483400144000, 1514936144000, 1546472144000, 1578008144000, 1609630544000, 1641166544000]} dataKey="sample_timestamp" domain={['auto', 'auto']} tickFormatter={(timestamp) => moment(timestamp).format('YYYY')} type='number' scale="time" >
               <Label value="Date" offset={-15} position="insideBottom" />
             </XAxis>
             <YAxis >
@@ -153,7 +153,7 @@ const FluviusBox = (props) => {
             onMouseMove={displayPictures}
           >
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="sample_timestamp" domain={['auto', 'auto']} tickFormatter={(timestamp) => moment(timestamp).format('MMM YY')} type='number' scale="time" >
+            <XAxis ticks={[1420156800000, 1451777744000, 1483400144000, 1514936144000, 1546472144000, 1578008144000, 1609630544000, 1641166544000]} dataKey="sample_timestamp" domain={['auto', 'auto']} tickFormatter={(timestamp) => moment(timestamp).format('YYYY')} type='number' scale="time" >
               <Label value="Date" offset={-15} position="insideBottom" style={{color: "white"}}/>
             </XAxis>
             <YAxis>

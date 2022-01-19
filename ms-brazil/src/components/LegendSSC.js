@@ -39,14 +39,14 @@ export default function Legend () {
             </Grid>
 
             <Grid item xs={1}>
-                  <body>High</body>
+                  <body>Low</body>
             </Grid>
 
             <Grid item xs={9}>
             </Grid>
 
             <Grid item xs={1}>
-                  <body>Low</body>
+                  <body>High</body>
             </Grid>
 
           </Grid>
