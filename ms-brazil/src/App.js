@@ -43,7 +43,7 @@ function App() {
   }, [popupInfo])
 
   useEffect(() => {
-    axios.get('https://fluviusdata.blob.core.windows.net/app/all_data_v2.json')
+    axios.get('https://fluviusdata.blob.core.windows.net/app/all_data_v3.json')
     .then(res=> {
         setAllData(res.data);
     })

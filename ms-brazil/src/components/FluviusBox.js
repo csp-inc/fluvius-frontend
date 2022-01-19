@@ -4,7 +4,8 @@ import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContain
 import {makeStyles} from '@material-ui/styles';
 import {Radio, RadioGroup, FormControl, FormLabel, FormControlLabel} from '@material-ui/core';
 // import Canvas from "./SatelliteCanvas";
-import moment from 'moment'
+import moment from 'moment';
+import LegendSSC from "./LegendSSC";
 
 const useStyles = makeStyles((theme) => ({
   containerBox: {
@@ -26,8 +27,11 @@ const useStyles = makeStyles((theme) => ({
 const FluviusBox = (props) => {
   const classes = useStyles();
   const data = props.popupInfo["sample_data"];
+  const data2 = props.popupInfo["predictions"];
+  console.log("data2", data2)
   console.log("data", data);
   const allData = props.allData;
+  // console.log("allData", allData);
   const popupInfo = props.popupInfo;
   const cameraPic = props.cameraPic
   const setCameraPic = props.setCameraPic;
@@ -67,8 +71,6 @@ const FluviusBox = (props) => {
   const dateFormatter = item => moment(item).format("MMM DD");
   
   const CustomTooltip = ({ active, payload, label }) => {
-    console.log("payload", payload);
-    console.log("label", label);
     if (active && payload && payload.length) {
     return (
       <div className='customTooltip'>
@@ -81,8 +83,8 @@ const FluviusBox = (props) => {
   }
 
   const CustomTooltip2 = ({ active, payload, label }) => {
-    console.log("payload", payload);
-    console.log("label", label);
+    // console.log("payload", payload);
+    // console.log("label", label);
     if (active && payload && payload.length) {
     return (
       <div className='customTooltip'>
@@ -110,7 +112,6 @@ const FluviusBox = (props) => {
           <LineChart
             width={580}
             height={220}
-            data={data}
             syncId="anyId"
             margin={{
               top: 0,
@@ -118,6 +119,7 @@ const FluviusBox = (props) => {
               left: 10,
               bottom: 30,
             }}
+            data={data}
             onMouseMove={displayPictures}
           >
             <CartesianGrid strokeDasharray="3 3" />
@@ -127,7 +129,10 @@ const FluviusBox = (props) => {
             <YAxis >
               <Label value="Discharge (m³/s)" angle={-90} offset={15} position="insideBottomLeft" />
             </YAxis>
-            <Line type="monotone" dataKey="Q.m3.s" stroke="transparent" fill="#def001" activeDot={{ r: 8 }} />
+
+            <Line data={data} type="monotone" dataKey="Q.m3.s" stroke="transparent" fill="#def001" activeDot={{ r: 8 }} />
+            {/* <Line data={data2} type="monotone" dataKey="Q.m3.s" stroke="transparent" fill="#4d4dff"  /> */}
+
             <Tooltip content={<CustomTooltip2 />}/>
           </LineChart>
         </ResponsiveContainer>
@@ -154,13 +159,17 @@ const FluviusBox = (props) => {
             <YAxis>
               <Label value="SSC (mg/L)" angle={-90} offset={15} position="insideBottomLeft" />
             </YAxis> 
+
             <Line type="monotone" dataKey="SSC.mg.L" stroke="transparent" fill="#def001"  activeDot={{ r: 8 }}/>
+
+            <Line type="monotone" dataKey="SSC.mg.L_MODEL" stroke="transparent" fill="#000"  activeDot={{ r: 8 }}/>
+
             <Tooltip content={<CustomTooltip />} labelFormatter={dateFormatter} />
           </LineChart>
         </ResponsiveContainer>
         </Box>
 
-        <Box flexGrow={0} style={{padding: "15px", backgroundColor: "black", color: "white", borderRadius: "5px", marginLeft: "10px", marginBottom: "10px", }}>
+        <Box flexGrow={0} style={{padding: "0px", backgroundColor: "black", color: "white", borderRadius: "5px", marginLeft: "20px", marginBottom: "10px", }}>
                 <br></br>
                 <FormControl component="fieldset" style={{color: "white", marginTop: "10px", marginBottom: "10px"}}>
                   <FormLabel component="legend" style={{color: "white"}}>Color Composite</FormLabel>
@@ -178,18 +187,35 @@ const FluviusBox = (props) => {
                 )}
 
                 {radioValue === "rgb" && (
-                  <img src={radioValue === "rgb" ? cameraPic : "Select a station and hover over the graph to see images."} alt="Camera Trap Photo" width="850px" height="425px" /> 
+                  <>
+                  <img src={radioValue === "rgb" ? cameraPic : "Select a station and hover over the graph to see images."} alt="Camera Trap Photo" width="850px" height="425px" />
+
+                    <div style={{marginLeft: "675px", marginTop: "4px"}}>
+                      <LegendSSC />
+                    </div> 
+                  </>
                 )}
 
                 {radioValue === "cir" && (
+                  <>
                   <img src={radioValue === "cir" ? cirPic : "Select a station and hover over the graph to see images."} alt="Camera Trap Photo" width="850px" height="425px" />
+
+                    <div style={{marginLeft: "675px", marginTop: "4px"}}>
+                      <LegendSSC />
+                    </div>
+                  </>
                 )}
 
                 {radioValue === "swir" && (
-                  <img src={radioValue === "swir" ? swirPic : "Select a station and hover over the graph to see images."} alt="Camera Trap Photo" width="850px" height="425px" />
+                  <>
+                    <img src={radioValue === "swir" ? swirPic : "Select a station and hover over the graph to see images."} alt="Camera Trap Photo" width="850px" height="425px" />
+
+                    <div style={{marginLeft: "675px", marginTop: "4px"}}>
+                      <LegendSSC />
+                    </div>
+                  </>
                 )}
                   {/* <Canvas satellitePic={satellitePic} /> */}
-
 
           </Box>
 
