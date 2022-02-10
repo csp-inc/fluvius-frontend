@@ -50,14 +50,11 @@ const FluviusBox = (props) => {
   };
 
   const displayPictures = (event) => {
-    let imageObject = allData.find( ({site_no}) => site_no === popupInfo.site_no)["sample_data"]
-    let imageData = imageObject.find((item) => item['sample_timestamp'] === event.activeLabel) || '' || undefined
+    let imageObject = allData.find( ({site_no}) => site_no === popupInfo.site_no)["predictions"]
+    let imageData = imageObject.find((item) => item['prediction_timestamp'] === event.activeLabel) || '' || undefined
 
     if (typeof imageData !== 'undefined' && typeof event.activeLabel !== undefined) {
-      setCameraPic(imageData["rgb_water_chip_href"])
-      setCirPic(imageData["cir_water_chip_href"])
-      setSwirPic(imageData["swir_water_chip_href"])
-      setSatellitePic(imageData["scl_png_href"])
+      setCameraPic(imageData["pred_chip"])
     }
   }
 
