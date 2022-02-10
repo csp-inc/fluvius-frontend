@@ -121,6 +121,22 @@ export default function Navbar() {
                         className={classes.MenuList}
                       >
                         <MenuItem style={{fontSize: "15px"}} onClick={handleClose}>
+                          <Link color="inherit" href="./About">
+                            <PublicIcon
+                              style={{ color: "rgb(246, 122, 55)" }}
+                            />
+                            &nbsp; About
+                          </Link>
+                        </MenuItem>
+                        <MenuItem style={{fontSize: "15px"}} onClick={handleClose}>
+                          <Link color="inherit" href="./Methodology">
+                            <PublicIcon
+                              style={{ color: "rgb(246, 122, 55)" }}
+                            />
+                            &nbsp; Methodology
+                          </Link>
+                        </MenuItem>
+                        <MenuItem style={{fontSize: "15px"}} onClick={handleClose}>
                           <Link color="inherit" href="https://github.com/csp-inc/fluvius">
                             <ExitToAppIcon
                               style={{ color: "rgb(246, 122, 55)" }}

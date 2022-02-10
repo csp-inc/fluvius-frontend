@@ -21,6 +21,60 @@
 
 .footer {
   background-color: #636466;
-  height: "40px";
+  margin-top: "40px";
+  height: "480px";
   width: "sw";
+}
+
+img.footer-img {
+    height: 60px;
+    margin-left: 10px;
+}
+
+img.footer-microsoft-img {
+    width: 80px;
+    margin-left: 10px;
+}
+
+img.footer-itv-img {
+    width: 70px;
+    margin-left: 10px;
+}
+
+img.footer-al-img {
+    width: 70px;
+    margin-left: 10px;
+}
+
+#footer-partnership-title {
+    display: inline;
+    color: #FFF;
+    font-size: 15px;
+    font-family: 'Roboto';
+}
+
+#footer-partnership {
+    display: inline;
+    position: absolute;
+    right: 20px;
+}
+
+.footer-itv {
+    padding: 5px;
+    background-color: #000D08;
+    display: flex;
+    align-items: center;
+}
+
+.about-footer {
+    width: 100%;
+}
+
+.methodology-footer {
+    position: absolute;
+    width: 100%;
+}
+
+.footer-imazon-logo {
+    margin-left: 5px;
 }

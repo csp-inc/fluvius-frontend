@@ -69,12 +69,14 @@ const FluviusBox = (props) => {
   }, [cameraPic, cirPic, swirPic, satellitePic])
 
   const dateFormatter = item => moment(item).format("MMM DD");
+        //<p>{Number.parseFloat(payload[0].value).toFixed(1)} mg/L</p>
   
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
     return (
       <div className='customTooltip'>
-        <p>{Number.parseFloat(payload[0].value).toFixed(1)} mg/L</p>
+        <p>{payload[0].value} mg/L</p>
+        <p>{payload[1].value} mg/L</p>
       </div>
     )
     }
@@ -107,36 +109,6 @@ const FluviusBox = (props) => {
       >
 
         <Box flexGrow={0} style={{ minWidth: "550px", backgroundColor: "black", color: "white", borderRadius: "5px", padding: "15px", marginBottom: "10px"  }}>
-          <Typography className={classes.graphTitle}>Discharge at Station {popupInfo.site_name}</Typography>
-          <ResponsiveContainer width="100%" height={250} >
-          <LineChart
-            width={580}
-            height={220}
-            syncId="anyId"
-            margin={{
-              top: 0,
-              right: 25,
-              left: 10,
-              bottom: 30,
-            }}
-            data={data}
-            onMouseMove={displayPictures}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis ticks={[1420156800000, 1451777744000, 1483400144000, 1514936144000, 1546472144000, 1578008144000, 1609630544000, 1641166544000]} dataKey="sample_timestamp" domain={['auto', 'auto']} tickFormatter={(timestamp) => moment(timestamp).format('YYYY')} type='number' scale="time" >
-              <Label value="Date" offset={-15} position="insideBottom" />
-            </XAxis>
-            <YAxis >
-              <Label value="Discharge (m³/s)" angle={-90} offset={15} position="insideBottomLeft" />
-            </YAxis>
-
-            <Line data={data} type="monotone" dataKey="Q.m3.s" stroke="transparent" fill="#def001" activeDot={{ r: 8 }} />
-            {/* <Line data={data2} type="monotone" dataKey="Q.m3.s" stroke="transparent" fill="#4d4dff"  /> */}
-
-            <Tooltip content={<CustomTooltip2 />}/>
-          </LineChart>
-        </ResponsiveContainer>
-
         <Typography className={classes.graphTitle}>Suspended Sediment Concentration at Station {popupInfo.site_name}</Typography>
         <ResponsiveContainer width="100%" height={250}>
           <LineChart
@@ -154,24 +126,24 @@ const FluviusBox = (props) => {
           >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis ticks={[1420156800000, 1451777744000, 1483400144000, 1514936144000, 1546472144000, 1578008144000, 1609630544000, 1641166544000]} dataKey="sample_timestamp" domain={['auto', 'auto']} tickFormatter={(timestamp) => moment(timestamp).format('YYYY')} type='number' scale="time" >
-              <Label value="Date" offset={-15} position="insideBottom" style={{color: "white"}}/>
+              <Label value="Date" offset={-15} position="insideBottom" fill="#ffffff"/>
             </XAxis>
             <YAxis>
-              <Label value="SSC (mg/L)" angle={-90} offset={15} position="insideBottomLeft" />
+              <Label value="SSC (mg/L)" angle={-90} offset={15} position="insideBottomLeft" fill="white"/>
             </YAxis> 
 
-            <Line type="monotone" dataKey="SSC.mg.L" stroke="transparent" fill="#def001"  activeDot={{ r: 8 }}/>
+            <Line type="monotone" name="SSC" dataKey="SSC.mg.L" stroke="transparent" fill="#def001"  activeDot={{ r: 8 }}/>
 
-            <Line type="monotone" dataKey="SSC.mg.L_MODEL" stroke="transparent" fill="#000"  activeDot={{ r: 8 }}/>
+            <Line type="monotone" name="SSC" dataKey="Q.m3.s" stroke="transparent" fill="#00ffff"  activeDot={{ r: 8 }}/>
 
-            <Tooltip content={<CustomTooltip />} labelFormatter={dateFormatter} />
+            <Tooltip content={<CustomTooltip />} />
           </LineChart>
         </ResponsiveContainer>
         </Box>
 
         <Box flexGrow={0} style={{padding: "0px", backgroundColor: "black", color: "white", borderRadius: "5px", marginLeft: "20px", marginBottom: "10px", }}>
                 <br></br>
-                <FormControl component="fieldset" style={{color: "white", marginTop: "10px", marginBottom: "10px"}}>
+                <FormControl component="fieldset" style={{color: "white", marginTop: "0px", marginBottom: "10px"}}>
                   <FormLabel component="legend" style={{color: "white"}}>Color Composite</FormLabel>
                   <RadioGroup row aria-label="color composite" name="row-radio-buttons-group" defaultValue="rgb" onChange={handleRadioChange}>
                     <FormControlLabel value="rgb" control={<Radio style={{color: "#def001"}} />} label="Natural Color" />
