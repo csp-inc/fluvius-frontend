@@ -141,51 +141,16 @@ const FluviusBox = (props) => {
         <Box flexGrow={0} style={{padding: "0px", backgroundColor: "black", color: "white", borderRadius: "5px", marginLeft: "20px", marginBottom: "10px", }}>
                 <br></br>
                 <FormControl component="fieldset" style={{color: "white", marginTop: "0px", marginBottom: "10px"}}>
-                  <FormLabel component="legend" style={{color: "white"}}>Color Composite</FormLabel>
-                  <RadioGroup row aria-label="color composite" name="row-radio-buttons-group" defaultValue="rgb" onChange={handleRadioChange}>
-                    <FormControlLabel value="rgb" control={<Radio style={{color: "#def001"}} />} label="Natural Color" />
-                    <FormControlLabel value="cir" control={<Radio style={{color: "#def001"}} />} label="Color Infrared" />
-                    <FormControlLabel value="swir" control={<Radio style={{color: "#def001"}} />} label="Short-wave Infrared" />
-                  </RadioGroup>
+                  <FormLabel component="legend" style={{color: "white"}}>Pirate Ipsum</FormLabel>
                 </FormControl>                
                 <br></br>
-                {radioValue === "" && (
                   <>
-                  <br></br>
-                  </>
-                )}
-
-                {radioValue === "rgb" && (
-                  <>
-                  <img src={radioValue === "rgb" ? cameraPic : "Select a station and hover over the graph to see images."} alt="Camera Trap Photo" width="850px" height="425px" />
+                  <img src={radioValue === "rgb" ? cameraPic : "Select a station and hover over the graph to see images."} alt="This is Alt Text" width="850px" height="425px" />
 
                     <div style={{marginLeft: "675px", marginTop: "4px"}}>
                       <LegendSSC />
                     </div> 
                   </>
-                )}
-
-                {radioValue === "cir" && (
-                  <>
-                  <img src={radioValue === "cir" ? cirPic : "Select a station and hover over the graph to see images."} alt="Camera Trap Photo" width="850px" height="425px" />
-
-                    <div style={{marginLeft: "675px", marginTop: "4px"}}>
-                      <LegendSSC />
-                    </div>
-                  </>
-                )}
-
-                {radioValue === "swir" && (
-                  <>
-                    <img src={radioValue === "swir" ? swirPic : "Select a station and hover over the graph to see images."} alt="Camera Trap Photo" width="850px" height="425px" />
-
-                    <div style={{marginLeft: "675px", marginTop: "4px"}}>
-                      <LegendSSC />
-                    </div>
-                  </>
-                )}
-                  {/* <Canvas satellitePic={satellitePic} /> */}
-
           </Box>
 
 
