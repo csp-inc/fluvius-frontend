@@ -43,7 +43,6 @@ const FluviusBox = (props) => {
   const setSatellitePic = props.setSatellitePic;
 
   const [variable, setVariable] = React.useState('');
-  const [legend, setLegend] = React.useState('');
 
   const handleChange = (event) => {
     setVariable(event.target.value);
