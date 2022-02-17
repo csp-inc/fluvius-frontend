@@ -24,9 +24,9 @@ function App() {
   const [swirPic, setSwirPic] = useState('');
   const [satellitePic, setSatellitePic] = useState('');
   const [viewport, setViewport] = useState({
-    latitude: 20,
-    longitude: -80,
-    zoom: 2.45,
+    latitude: -12,
+    longitude: -50,
+    zoom: 3.5,
     bearing: 0,
     pitch: 0
   });

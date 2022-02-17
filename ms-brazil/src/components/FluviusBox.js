@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import {Paper, Typography, Box} from "@material-ui/core";
 import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Label} from "recharts";
 import {makeStyles} from '@material-ui/styles';
-import {Radio, RadioGroup, FormControl, FormLabel, FormControlLabel} from '@material-ui/core';
+import {FormControl, FormLabel, FormControlLabel} from '@material-ui/core';
 // import Canvas from "./SatelliteCanvas";
 import moment from 'moment';
 import LegendSSC from "./LegendSSC";
@@ -33,7 +33,7 @@ const FluviusBox = (props) => {
   const allData = props.allData;
   // console.log("allData", allData);
   const popupInfo = props.popupInfo;
-  const cameraPic = props.cameraPic
+  const cameraPic = props.cameraPic;
   const setCameraPic = props.setCameraPic;
   const cirPic = props.cirPic;
   const setCirPic = props.setCirPic;
@@ -43,7 +43,7 @@ const FluviusBox = (props) => {
   const setSatellitePic = props.setSatellitePic;
 
   const [variable, setVariable] = React.useState('');
-  const [radioValue, setRadioValue] = useState('rgb');
+  const [legend, setLegend] = React.useState('');
 
   const handleChange = (event) => {
     setVariable(event.target.value);
@@ -57,13 +57,6 @@ const FluviusBox = (props) => {
       setCameraPic(imageData["pred_chip"])
     }
   }
-
-  const handleRadioChange = (event) => {
-    setRadioValue(event.target.value);
-  };
-
-  useEffect(() => {
-  }, [cameraPic, cirPic, swirPic, satellitePic])
 
   const dateFormatter = item => moment(item).format("MMM DD");
         //<p>{Number.parseFloat(payload[0].value).toFixed(1)} mg/L</p>
@@ -145,7 +138,7 @@ const FluviusBox = (props) => {
                 </FormControl>                
                 <br></br>
                   <>
-                  <img src={radioValue === "rgb" ? cameraPic : "Select a station and hover over the graph to see images."} alt="This is Alt Text" width="850px" height="425px" />
+                  <img src={cameraPic} alt=" " width="850px" height="425px" />
 
                     <div style={{marginLeft: "675px", marginTop: "4px"}}>
                       <LegendSSC />
