@@ -128,9 +128,6 @@ const FluviusBox = (props) => {
 
         <Box flexGrow={0} style={{padding: "0px", backgroundColor: "black", color: "white", borderRadius: "5px", marginLeft: "20px", marginBottom: "10px", }}>
                 <br></br>
-                <FormControl component="fieldset" style={{color: "white", marginTop: "0px", marginBottom: "10px"}}>
-                  <FormLabel component="legend" style={{color: "white"}}> </FormLabel>
-                </FormControl>                
                 <br></br>
                   <>
                   <img src={cameraPic} alt=" " width="850px" height="425px" />
