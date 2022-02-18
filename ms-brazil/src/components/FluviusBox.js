@@ -4,6 +4,7 @@ import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContain
 import {makeStyles} from '@material-ui/styles';
 import {FormControl, FormLabel, FormControlLabel} from '@material-ui/core';
 // import Canvas from "./SatelliteCanvas";
+//            <Line type="monotone" name="SSC" data={data} dataKey="SSC.mg.L" stroke="transparent" fill="#0e30e1"  activeDot={{ r: 8 }}/>
 import moment from 'moment';
 import LegendSSC from "./LegendSSC";
 
@@ -50,7 +51,7 @@ const FluviusBox = (props) => {
 
   const displayPictures = (event) => {
     let imageObject = allData.find( ({site_no}) => site_no === popupInfo.site_no)["predictions"]
-    let imageData = imageObject.find((item) => item['timestamp'] === event.activeLabel) || '' || undefined
+    let imageData = data2.find((item) => item['timestamp'] === event.activeLabel) || '' || undefined
 
     if (typeof imageData !== 'undefined' && typeof event.activeLabel !== undefined) {
       setCameraPic(imageData["pred_chip"])
@@ -64,7 +65,7 @@ const FluviusBox = (props) => {
     if (active && payload && payload.length) {
     return (
       <div className='customTooltip'>
-        <p>{Number.parseFloat(payload[0].value).toFixed(2)} mg/L</p>
+        <p>{Number.parseFloat(payload[0].value).toFixed(1)} mg/L</p>
       </div>
     )
     }
