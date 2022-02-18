@@ -50,7 +50,7 @@ const FluviusBox = (props) => {
 
   const displayPictures = (event) => {
     let imageObject = allData.find( ({site_no}) => site_no === popupInfo.site_no)["predictions"]
-    let imageData = imageObject.find((item) => item['prediction_timestamp'] === event.activeLabel) || '' || undefined
+    let imageData = imageObject.find((item) => item['timestamp'] === event.activeLabel) || '' || undefined
 
     if (typeof imageData !== 'undefined' && typeof event.activeLabel !== undefined) {
       setCameraPic(imageData["pred_chip"])
@@ -64,8 +64,7 @@ const FluviusBox = (props) => {
     if (active && payload && payload.length) {
     return (
       <div className='customTooltip'>
-        <p>{payload[0].value} mg/L</p>
-        <p>{payload[1].value} mg/L</p>
+        <p>{Number.parseFloat(payload[0].value).toFixed(2)} mg/L</p>
       </div>
     )
     }
@@ -97,24 +96,24 @@ const FluviusBox = (props) => {
         className={classes.containerBox}
       >
 
-        <Box flexGrow={0} style={{ minWidth: "550px", backgroundColor: "black", color: "white", borderRadius: "5px", padding: "15px", marginBottom: "10px"  }}>
+        <Box flexGrow={0} style={{ minWidth: "950px", backgroundColor: "black", color: "white", borderRadius: "5px", padding: "15px", marginBottom: "10px"  }}>
         <Typography className={classes.graphTitle}>Suspended Sediment Concentration at Station {popupInfo.site_name}</Typography>
         <ResponsiveContainer width="100%" height={250}>
           <LineChart
-            width={580}
+            width={980}
             height={220}
-            data={data}
+	    data={data2}
             syncId="anyId"
             margin={{
               top: 0,
-              right: 25,
-              left: 10,
+              right: 5,
+              left: 0,
               bottom: 20,
             }}
             onMouseMove={displayPictures}
           >
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis ticks={[1420156800000, 1451777744000, 1483400144000, 1514936144000, 1546472144000, 1578008144000, 1609630544000, 1641166544000]} dataKey="sample_timestamp" domain={['auto', 'auto']} tickFormatter={(timestamp) => moment(timestamp).format('YYYY')} type='number' scale="time" >
+            <XAxis ticks={[1420156800000, 1451777744000, 1483400144000, 1514936144000, 1546472144000, 1578008144000, 1609630544000, 1641166544000]} dataKey="timestamp" domain={['auto', 'auto']} tickFormatter={(timestamp) => moment(timestamp).format('YYYY')} type='number' scale="time" >
               <Label value="Date" offset={-15} position="insideBottom" fill="#ffffff"/>
             </XAxis>
             <YAxis>
@@ -122,9 +121,6 @@ const FluviusBox = (props) => {
             </YAxis> 
 
             <Line type="monotone" name="SSC" dataKey="SSC.mg.L" stroke="transparent" fill="#def001"  activeDot={{ r: 8 }}/>
-
-            <Line type="monotone" name="SSC" dataKey="Q.m3.s" stroke="transparent" fill="#00ffff"  activeDot={{ r: 8 }}/>
-
             <Tooltip content={<CustomTooltip />} />
           </LineChart>
         </ResponsiveContainer>
