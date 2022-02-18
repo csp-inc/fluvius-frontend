@@ -93,8 +93,6 @@ const MapStations = (props) => {
           <Typography variant="body1">
               Name: &nbsp;&nbsp;&nbsp;<b>{popupInfo.site_name}</b>
               <hr></hr>
-              Description: 
-              <hr></hr>
               Latitude: &nbsp;&nbsp;&nbsp;<b>{popupInfo.Latitude}</b>
               <hr></hr>
               Longitude: &nbsp;&nbsp;&nbsp;<b>{popupInfo.Longitude}</b>
