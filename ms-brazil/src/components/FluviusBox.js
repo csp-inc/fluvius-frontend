@@ -50,7 +50,6 @@ const FluviusBox = (props) => {
   };
 
   const displayPictures = (event) => {
-    let imageObject = allData.find( ({site_no}) => site_no === popupInfo.site_no)["predictions"]
     let imageData = data2.find((item) => item['timestamp'] === event.activeLabel) || '' || undefined
 
     if (typeof imageData !== 'undefined' && typeof event.activeLabel !== undefined) {
@@ -130,7 +129,7 @@ const FluviusBox = (props) => {
         <Box flexGrow={0} style={{padding: "0px", backgroundColor: "black", color: "white", borderRadius: "5px", marginLeft: "20px", marginBottom: "10px", }}>
                 <br></br>
                 <FormControl component="fieldset" style={{color: "white", marginTop: "0px", marginBottom: "10px"}}>
-                  <FormLabel component="legend" style={{color: "white"}}>Pirate Ipsum</FormLabel>
+                  <FormLabel component="legend" style={{color: "white"}}> </FormLabel>
                 </FormControl>                
                 <br></br>
                   <>
