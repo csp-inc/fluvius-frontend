@@ -3,41 +3,9 @@ import {Box, Paper, Typography} from "@material-ui/core";
 import {makeStyles} from '@material-ui/styles';
 
 const useStyles = makeStyles((theme) => ({
-  formControlPaper: {
-    backgroundColor: "#000000"
-  },  
-  formControl: {
-      margin: theme.spacing(3),
-      width: '490px',
-      marginTop: '45px',
-      marginLeft: '25px',
-      marginRight: '25px',
-      marginBottom: '-15px',
-      backgroundColor: "#000",
-      color: "#fff"
-    },
-    darkLabel: {
-      backgroundColor: "#000",
-      color: '#fff',
-    },
-    darkUnderline: {
-      '&:hover:not($disabled):before': {
-        backgroundColor: '#000', 
-        color: "#fff"   
-      },
-    },
-    darkInkbar: {
-      '&:after': {
-        backgroundColor: '#000',
-        color: "#fff"    
-      },
-    },
-    selectEmpty: {
-      marginTop: theme.spacing(2),
-    },
     box: {
-        minWidth: 500,
-        minHeight: 575,
+        minWidth: 900,
+        minHeight: 975,
         backgroundColor: "black"
     },
     stationDetails: {
