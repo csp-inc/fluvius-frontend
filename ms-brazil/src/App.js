@@ -8,23 +8,37 @@ import valelogo from "./images/vale-logo-8.png";
 import msftlogo from "./images/msftlogo1.png";
 import allogo from "./images/al_logo.png";
 import allogo2 from "./images/al_logo2.png";
+import {makeStyles} from '@material-ui/styles';
 
-import axios from 'axios';
+const useStyles = makeStyles((theme) => ({
+    footer: {
+	position: 'absolute',
+        bottom: 0,
+	right: 0,
+	backgroundColor: "blue",
+	width: '98%'
+    }
+  }));
 
-function App() {
+const App = () => {
+  const classes = useStyles();
   return (
-    <div className="App">
+    <Box display="flex" flexDirection="column" height="100vh">
+      <Box flexGrow={9}>
       <Navbar />
       <Main />
-      <Box sx={{ padding: "80px 60px", background: "#00FF00", position: "absolute", bottom: 0, height: "60px", width: "98%" }} display="flex" flexWrap="wrap" justifyContent="right" >
-                    <img class="footer-img" src={itvlogo1}/>
-                    <img class="footer-img" src={itvlogo2}/>
-                    <img class="footer-img" src={valelogo}/>
-                    <img class="footer-img" src={msftlogo}/>
-                    <img class="footer-img" src={allogo}/>
-                    <img class="footer-img" src={allogo2}/>
-      </Box> 
-    </div>
+      </Box>
+	<Box alignSelf="flex-end" alignItems="flex-end" flexGrow={1} bgcolor="#00FF00">
+	  <div className={classes.footer}>
+          <img class="footer-img" src={itvlogo1}/>
+          <img class="footer-img" src={itvlogo2}/>
+          <img class="footer-img" src={valelogo}/>
+          <img class="footer-img" src={msftlogo}/>
+          <img class="footer-img" src={allogo}/>
+          <img class="footer-img" src={allogo2}/>
+	  </div>
+        </Box> 
+    </Box>
   );
 }
 
