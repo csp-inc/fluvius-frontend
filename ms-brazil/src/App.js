@@ -14,8 +14,9 @@ const useStyles = makeStyles((theme) => ({
     footer: {
 	position: 'absolute',
         bottom: 0,
-	right: 0,
-	backgroundColor: "blue",
+	right: '1%',
+	display: 'flex',
+	justifyContent: 'flex-end',
 	width: '98%'
     }
   }));
@@ -23,13 +24,11 @@ const useStyles = makeStyles((theme) => ({
 const App = () => {
   const classes = useStyles();
   return (
-    <Box display="flex" flexDirection="column" height="100vh">
-      <Box flexGrow={9}>
+    <Box height="100vh">
       <Navbar />
       <Main />
-      </Box>
-	<Box alignSelf="flex-end" alignItems="flex-end" flexGrow={1} bgcolor="#00FF00">
 	  <div className={classes.footer}>
+	  <div display="flex">
           <img class="footer-img" src={itvlogo1}/>
           <img class="footer-img" src={itvlogo2}/>
           <img class="footer-img" src={valelogo}/>
@@ -37,7 +36,7 @@ const App = () => {
           <img class="footer-img" src={allogo}/>
           <img class="footer-img" src={allogo2}/>
 	  </div>
-        </Box> 
+	  </div>
     </Box>
   );
 }
