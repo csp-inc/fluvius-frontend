@@ -1,10 +1,7 @@
-import React, { useEffect, useState } from "react";
-import {Paper, Typography, Box} from "@material-ui/core";
+import React from "react";
+import {Typography, Box} from "@material-ui/core";
 import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Label} from "recharts";
 import {makeStyles} from '@material-ui/styles';
-import {FormControl, FormLabel, FormControlLabel} from '@material-ui/core';
-// import Canvas from "./SatelliteCanvas";
-//            <Line type="monotone" name="SSC" data={data} dataKey="SSC.mg.L" stroke="transparent" fill="#0e30e1"  activeDot={{ r: 8 }}/>
 import moment from 'moment';
 import LegendSSC from "./LegendSSC";
 
@@ -13,12 +10,6 @@ const useStyles = makeStyles((theme) => ({
     padding: "10px",
     backgroundColor: "#000000",
     color: "white"
-  },
-  formControl: {
-    // margin: theme.spacing(3),
-    width: '100%',
-    marginTop: '5px',
-    marginBottom: "10px"
   },
   graphTitle: {
     marginBottom: "20px"
@@ -31,17 +22,9 @@ const FluviusBox = (props) => {
   const data2 = props.popupInfo["predictions"];
   console.log("data2", data2)
   console.log("data", data);
-  const allData = props.allData;
-  // console.log("allData", allData);
   const popupInfo = props.popupInfo;
   const cameraPic = props.cameraPic;
   const setCameraPic = props.setCameraPic;
-  const cirPic = props.cirPic;
-  const setCirPic = props.setCirPic;
-  const swirPic = props.swirPic;
-  const setSwirPic = props.setSwirPic;
-  const satellitePic = props.satellitePic;
-  const setSatellitePic = props.setSatellitePic;
 
   const [variable, setVariable] = React.useState('');
 
@@ -57,28 +40,11 @@ const FluviusBox = (props) => {
     }
   }
 
-  const dateFormatter = item => moment(item).format("MMM DD");
-        //<p>{Number.parseFloat(payload[0].value).toFixed(1)} mg/L</p>
-  
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
     return (
       <div className='customTooltip'>
         <p>{Number.parseFloat(payload[0].value).toFixed(1)} mg/L</p>
-      </div>
-    )
-    }
-
-    return null;
-  }
-
-  const CustomTooltip2 = ({ active, payload, label }) => {
-    // console.log("payload", payload);
-    // console.log("label", label);
-    if (active && payload && payload.length) {
-    return (
-      <div className='customTooltip'>
-        <p>{Number.parseFloat(payload[0].value).toFixed(1)} m³/s</p>
       </div>
     )
     }

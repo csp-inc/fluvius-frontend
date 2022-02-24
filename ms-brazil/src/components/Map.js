@@ -1,9 +1,8 @@
 import * as React from 'react';
-import MapGL, { Popup, NavigationControl, FullscreenControl, ScaleControl, GeolocateControl, FlyToInterpolator} from 'react-map-gl';
+import MapGL, { Popup, NavigationControl, FullscreenControl, ScaleControl, GeolocateControl} from 'react-map-gl';
 import mapboxgl from "mapbox-gl";
 
 //Components
-import ControlPanel from './MapControlPanel';
 import Pins from './MapPins';
 import StationInfo from './Station-info';
 import mapStyle from "./MapStyle.json"
