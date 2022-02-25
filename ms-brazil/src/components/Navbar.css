@@ -1,0 +1,22 @@
+.mid {
+	display: inline-block;
+	width: 55%;
+	margin: auto;
+}
+.navbar {
+	display:inline-block;
+}
+.navbar li{
+list-style: none;
+display:inline-block;
+margin:auto;
+}
+.navbar li a{
+text-decoration: none;
+color:rgb(29, 25, 231);
+font-size: 24px;
+padding: 30px;
+}
+.navbar li a:hover{
+color:rgb(151, 7, 247);
+}
