@@ -52,7 +52,7 @@ function Home() {
 }, [])
 
   return (
-    <div className="App">
+    <Box>
       <Box display="flex" flexWrap="wrap" flexDirection="row" justifyContent="center" alignItems="center" >
         <Box md={6} sm={12} xs={12} flexGrow={1}>
           <Map allData={allData} popupInfo={popupInfo} setPopupInfo={setPopupInfo} selectValue={selectValue} setSelectValue={setSelectValue} viewport={viewport} setViewport={setViewport} onSelectStation={onSelectStation}/>
@@ -75,7 +75,7 @@ function Home() {
           </Box>
       )}
 
-    </div>
+    </Box>
   );
 }
 
