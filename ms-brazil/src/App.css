@@ -26,6 +26,11 @@
   width: "sw";
 }
 
+img.big-img {
+    width: 100%;
+    margin: 10px;
+}
+
 img.footer-img {
     height: 60px;
     margin-left: 10px;
