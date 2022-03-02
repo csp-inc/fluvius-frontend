@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     color: "white"
   },
   graphTitle: {
-    marginBottom: "20px"
+    marginBottom: "20px",
   }
 }));
 
@@ -28,9 +28,7 @@ const FluviusBox = (props) => {
 
   const [variable, setVariable] = React.useState('');
 
-  const handleChange = (event) => {
-    setVariable(event.target.value);
-  };
+  setCameraPic(data2[0]["pred_chip"])
 
   const displayPictures = (event) => {
     let imageData = data2.find((item) => item['timestamp'] === event.activeLabel) || '' || undefined
@@ -64,7 +62,7 @@ const FluviusBox = (props) => {
 
         <Box flexGrow={0} style={{ minWidth: "950px", backgroundColor: "black", color: "white", borderRadius: "5px", padding: "15px", marginBottom: "10px"  }}>
         <Typography className={classes.graphTitle}>Suspended Sediment Concentration at Station {popupInfo.site_name}</Typography>
-        <ResponsiveContainer width="100%" height={250}>
+        <ResponsiveContainer width="97%" height={250} marginRight="22px">
           <LineChart
             width={980}
             height={220}
@@ -82,8 +80,8 @@ const FluviusBox = (props) => {
             <XAxis ticks={[1420156800000, 1451777744000, 1483400144000, 1514936144000, 1546472144000, 1578008144000, 1609630544000, 1641166544000]} dataKey="timestamp" domain={['auto', 'auto']} tickFormatter={(timestamp) => moment(timestamp).format('YYYY')} type='number' scale="time" >
               <Label value="Date" offset={-15} position="insideBottom" fill="#ffffff"/>
             </XAxis>
-            <YAxis>
-              <Label value="SSC (mg/L)" angle={-90} offset={15} position="insideBottomLeft" fill="white"/>
+            <YAxis domain={[0, 200]}>
+              <Label value="SSC (mg/L)" angle={-90} style={{ textAnchor: 'middle' }} position="insideLeft" fill="white"/>
             </YAxis> 
 
             <Line type="monotone" name="SSC" dataKey="SSC.mg.L" stroke="transparent" fill="#def001"  activeDot={{ r: 8 }}/>
@@ -92,7 +90,7 @@ const FluviusBox = (props) => {
         </ResponsiveContainer>
         </Box>
 
-        <Box flexGrow={0} style={{padding: "0px", backgroundColor: "black", color: "white", borderRadius: "5px", marginLeft: "20px", marginBottom: "10px", }}>
+        <Box flexGrow={0} style={{padding: "0px", backgroundColor: "black", borderRadius: "5px", marginLeft: "20px", marginBottom: "10px", }}>
                 <br></br>
                 <br></br>
                   <>
