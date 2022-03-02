@@ -100,12 +100,6 @@ const MapStations = (props) => {
               Station Owner:  &nbsp;&nbsp;&nbsp;<b>{popupInfo.region}</b>
               <hr></hr>
           </Typography>
-          <br></br>
-          <Typography variant="body1">
-            <br></br>
-                <b>Project Overview:</b>
-                <p>Project Fluvius uses satellite images and AI to monitor the health of Amazon and U.S. rivers by enabling near real-time prediction of suspended sediment concentration. </p>
-          </Typography>
       </Paper>
 
       </Paper>
