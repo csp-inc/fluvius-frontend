@@ -59,7 +59,7 @@ function Inicio() {
         </Box>
 
         <Box item md={6} sm={12} xs={12} flexGrow={0}>
-          <MapStations allData={allData}  popupInfo={popupInfo} setPopupInfo={setPopupInfo}  selectValue={selectValue} setSelectValue={setSelectValue} onSelectStation={onSelectStation}/>
+          <MapStationsPT allData={allData}  popupInfo={popupInfo} setPopupInfo={setPopupInfo}  selectValue={selectValue} setSelectValue={setSelectValue} onSelectStation={onSelectStation}/>
         </Box>
       </Box>
 
@@ -71,7 +71,7 @@ function Inicio() {
 
       {Object.keys(popupInfo).length !== 0 && (
           <Box display="flex" flexWrap="wrap" flexDirection="row" justifyContent="center" alignItems="center">
-              <FluviusBox allData={allData} popupInfo={popupInfo} cameraPic={cameraPic} setCameraPic={setCameraPic} cirPic={cirPic} setCirPic={setCirPic} swirPic={swirPic} setSwirPic={setSwirPic} satellitePic={satellitePic} setSatellitePic={setSatellitePic}/>
+              <FluviusBoxPT allData={allData} popupInfo={popupInfo} cameraPic={cameraPic} setCameraPic={setCameraPic} cirPic={cirPic} setCirPic={setCirPic} swirPic={swirPic} setSwirPic={setSwirPic} satellitePic={satellitePic} setSatellitePic={setSatellitePic}/>
           </Box>
       )}
 
