@@ -51,6 +51,11 @@ export default function Navbar() {
             Methodology
           </Link>
 	  </li>
+	  <li>
+	  <Link to="/inicio">
+            PT/BR
+          </Link>
+	  </li>
 	  </ul>
 	  </div>
           </Typography>
