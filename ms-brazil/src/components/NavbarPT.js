@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import {Toolbar, Typography} from "@material-ui/core";
+import {Box, Toolbar, Typography} from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import trees from "../images/itv_tree.png";
 import "./Navbar.css"
@@ -12,8 +12,17 @@ const useStyles = makeStyles((theme) => ({
     zIndex: 50
   },
   title: {
+    flexGrow: 4,
+    display: "flex",
+    [theme.breakpoints.up("sm")]: {
+      display: "block",
+    },
+    fontSize: "24px",
+    color: "white"
+  },
+  toggle: {
     flexGrow: 1,
-    display: "none",
+    display: "flex",
     [theme.breakpoints.up("sm")]: {
       display: "block",
     },
@@ -26,11 +35,10 @@ export default function Navbar() {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-        <Toolbar>
+    <Box className={classes.root}>
+        <Toolbar className={classes.title}>
           <Typography
             align="left"
-            className={classes.title}
             variant="h6"
             noWrap
           >
@@ -46,9 +54,10 @@ export default function Navbar() {
             Metodologia
           </NavLink>
           </Typography>
+        </Toolbar>
+        <Toolbar className={classes.toggle}>
           <Typography
             align="right"
-            className={classes.title}
             variant="h6"
             noWrap
           >
@@ -57,6 +66,6 @@ export default function Navbar() {
           </NavLink>
           </Typography>
         </Toolbar>
-    </div>
+    </Box>
   );
 }

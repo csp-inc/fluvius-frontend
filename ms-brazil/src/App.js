@@ -20,10 +20,7 @@ const useStyles = makeStyles((theme) => ({
 
 const App = () => {
   const location = useLocation();
-  console.log(String(location.pathname));
-  console.log(String(location.pathname).includes("/"));
   const portuguese = (String(location.pathname).includes("pt_br") ? true : false ); 
-  console.log(portuguese);
   const classes = useStyles();
   return (
     <Box display="flex" flexDirection="column" height="100vh">
