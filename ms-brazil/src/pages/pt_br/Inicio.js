@@ -1,14 +1,21 @@
 import React, {useState, useEffect} from 'react'
-import "../App.css";
-import Map from "../components/Map";
-import MapStations from "../components/MapStations"
-import FluviusBox from "../components/FluviusBox"
+import "../../App.css";
+import Map from "../../components/Map";
+import MapStationsPT from "../../components/MapStationsPT"
+import FluviusBoxPT from "../../components/FluviusBoxPT"
 import {Box} from "@material-ui/core";
 import {FlyToInterpolator} from 'react-map-gl';
-
+import { makeStyles } from "@material-ui/core/styles";
 import axios from 'axios';
 
-function Home() {
+const useStyles = makeStyles((theme) => ({
+	homestyle: {
+          paddingTop: '15px', 
+	},
+}));
+
+function Inicio() {
+  const classes = useStyles();
   const [allData, setAllData]= useState([])
   const [popupInfo, setPopupInfo] = useState({});
   const [selectValue, setSelectValue] = useState('')
@@ -52,26 +59,26 @@ function Home() {
 }, [])
 
   return (
-    <Box>
+    <Box className={classes.homestyle}>
       <Box display="flex" flexWrap="wrap" flexDirection="row" justifyContent="center" alignItems="center" >
         <Box md={6} sm={12} xs={12} flexGrow={1}>
           <Map allData={allData} popupInfo={popupInfo} setPopupInfo={setPopupInfo} selectValue={selectValue} setSelectValue={setSelectValue} viewport={viewport} setViewport={setViewport} onSelectStation={onSelectStation}/>
         </Box>
 
         <Box item md={6} sm={12} xs={12} flexGrow={0}>
-          <MapStations allData={allData}  popupInfo={popupInfo} setPopupInfo={setPopupInfo}  selectValue={selectValue} setSelectValue={setSelectValue} onSelectStation={onSelectStation}/>
+          <MapStationsPT allData={allData}  popupInfo={popupInfo} setPopupInfo={setPopupInfo}  selectValue={selectValue} setSelectValue={setSelectValue} onSelectStation={onSelectStation}/>
         </Box>
       </Box>
 
       {Object.keys(popupInfo).length === 0 && (
           <Box display="flex" flexWrap="wrap" flexDirection="row" justifyContent="center" alignItems="center" style={{color: "white"}}>
-              <p>Select a station by clicking a red marker on the map or from the dropdown menu.</p>
+              <p>Selecione uma estação clicando em um marcador vermelho no mapa ou no menu suspenso.</p>
           </Box>
       )}
 
       {Object.keys(popupInfo).length !== 0 && (
           <Box display="flex" flexWrap="wrap" flexDirection="row" justifyContent="center" alignItems="center">
-              <FluviusBox allData={allData} popupInfo={popupInfo} cameraPic={cameraPic} setCameraPic={setCameraPic} cirPic={cirPic} setCirPic={setCirPic} swirPic={swirPic} setSwirPic={setSwirPic} satellitePic={satellitePic} setSatellitePic={setSatellitePic}/>
+              <FluviusBoxPT allData={allData} popupInfo={popupInfo} cameraPic={cameraPic} setCameraPic={setCameraPic} cirPic={cirPic} setCirPic={setCirPic} swirPic={swirPic} setSwirPic={setSwirPic} satellitePic={satellitePic} setSatellitePic={setSatellitePic}/>
           </Box>
       )}
 
@@ -79,4 +86,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Inicio;

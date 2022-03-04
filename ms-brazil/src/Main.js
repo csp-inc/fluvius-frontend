@@ -1,12 +1,12 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import Home from './pages/Home';
-import About from './pages/About';
-import Methodology from './pages/Methodology';
-import Inicio from './pages/Inicio';
-import Sobre from './pages/Sobre';
-import Metodologia from './pages/Metodologia';
+import Home from './pages/en_us/Home';
+import About from './pages/en_us/About';
+import Methodology from './pages/en_us/Methodology';
+import Inicio from './pages/pt_br/Inicio';
+import Sobre from './pages/pt_br/Sobre';
+import Metodologia from './pages/pt_br/Metodologia';
 
 const Main = () => {
   return (
@@ -14,9 +14,10 @@ const Main = () => {
       <Route path='/' element={<Home/>}></Route>
       <Route path='/about' element={<About/>}></Route>
       <Route path='/methodology' element={<Methodology/>}></Route>
-      <Route path='/inicio' element={<Inicio/>}></Route>
-      <Route path='/sobre' element={<Sobre/>}></Route>
-      <Route path='/metodologia' element={<Metodologia/>}></Route>
+      <Route path='/pt_br/inicio' element={<Inicio/>}></Route>
+      <Route path='/pt_br/sobre' element={<Sobre/>}></Route>
+      <Route path='/pt_br/metodologia' element={<Metodologia/>}></Route>
+      <Route path='*' element={<Home/>}></Route>
     </Routes>
   );
 }

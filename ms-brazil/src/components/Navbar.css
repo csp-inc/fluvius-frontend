@@ -11,12 +11,54 @@ list-style: none;
 display:inline-block;
 margin:auto;
 }
-.navbar li a{
+.navbar {
 text-decoration: none;
-color:rgb(29, 25, 231);
 font-size: 24px;
-padding: 30px;
+padding-left: 30px;
+padding-top: 30px;
+padding-right: 30px;
 }
 .navbar li a:hover{
 color:rgb(151, 7, 247);
 }
+
+.langgroup1 > .active{
+	background-color: red;
+	color: #0ff;
+}
+
+.langgroup1 > a:not(.langgroup1 a.active ~ a){
+	background-color: red;
+	color: #0ff;
+}
+
+.langgroup1 > .active ~ a{
+	background-color: red;
+	color: #0ff;
+}
+
+.langgroup1 > .inactive{
+	background-color: green;
+	color: #f0f;
+}
+
+.langgroup2 > .active{
+	background-color: red;
+	color: #0ff;
+}
+
+.langgroup2 > a:not(.langgroup2 a.active ~ a){
+	background-color: red;
+	color: #0ff;
+}
+
+.langgroup2 > .active ~ a{
+	background-color: red;
+	color: #0ff;
+}
+
+.langgroup2 > .inactive{
+	background-color: green;
+	color: #f0f;
+}
+

@@ -26,10 +26,6 @@ const FluviusBox = (props) => {
   const cameraPic = props.cameraPic;
   const setCameraPic = props.setCameraPic;
 
-  const [variable, setVariable] = React.useState('');
-
-  setCameraPic(data2[0]["pred_chip"])
-
   const displayPictures = (event) => {
     let imageData = data2.find((item) => item['timestamp'] === event.activeLabel) || '' || undefined
 
@@ -93,13 +89,14 @@ const FluviusBox = (props) => {
         <Box flexGrow={0} style={{padding: "0px", backgroundColor: "black", borderRadius: "5px", marginLeft: "20px", marginBottom: "10px", }}>
                 <br></br>
                 <br></br>
-                  <>
+	  {cameraPic.length ?
+		  <>
                   <img src={cameraPic} alt=" " width="850px" height="425px" />
 
                     <div style={{marginLeft: "675px", marginTop: "4px"}}>
                       <LegendSSC />
                     </div> 
-                  </>
+                  </> : <></> }
           </Box>
 
 

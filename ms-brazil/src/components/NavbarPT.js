@@ -36,14 +36,14 @@ export default function Navbar() {
           >
             <img class="footer-img" alt="" src={trees}/>
             Project Fluvius
-	  <NavLink exact className={({isActive}) => (isActive ? "active" : "") + " navbar"} to="/">
-            Home
+	  <NavLink className={({isActive}) => (isActive ? "active" : "") + " navbar"} to="/pt_br/inicio">
+            Inicio
           </NavLink>
-	  <NavLink className={({isActive}) => (isActive ? "active" : "") + " navbar"} to="/about">
-            About
+	  <NavLink className={({isActive}) => (isActive ? "active" : "") + " navbar"} to="/pt_br/sobre">
+            Sobre
           </NavLink>
-	  <NavLink className={({isActive}) => (isActive ? "active" : "") + " navbar"} to="/methodology">
-            Methodology
+	  <NavLink className={({isActive}) => (isActive ? "active" : "") + " navbar"} to="/pt_br/metodologia">
+            Metodologia
           </NavLink>
           </Typography>
           <Typography
@@ -52,8 +52,8 @@ export default function Navbar() {
             variant="h6"
             noWrap
           >
-	  <NavLink className={({isActive}) => (isActive ? "active" : "") + " navbar"} to="/pt_br/inicio">
-            PT/BR
+	  <NavLink className={({isActive}) => (isActive ? "active" : "") + " navbar"} to="/">
+            EN/US
           </NavLink>
           </Typography>
         </Toolbar>
