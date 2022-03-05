@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import {Box, Toolbar, Typography} from "@material-ui/core";
+import {Box} from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import trees from "../images/itv_tree.png";
 import "./Navbar.css"
@@ -31,13 +31,14 @@ const useStyles = makeStyles((theme) => ({
     color: "white"
   },
   toggle: {
-    flexGrow: 1,
+    flexGrow: 3,
     display: "flex",
     [theme.breakpoints.up("sm")]: {
       display: "block",
     },
     fontSize: "24px",
     paddingTop: "18px",
+    alignItems: "flex-end",
     color: "white"
   },
 }));
@@ -47,30 +48,13 @@ export default function Navbar() {
 
   return (
     <Box className={classes.root}>
-        <Toolbar className={classes.pic}>
-          <Typography
-            align="left"
-            variant="h6"
-            noWrap
-          >
-            <img class="footer-img" alt="" src={trees}/>
-          </Typography>
-        </Toolbar>
-        <Toolbar className={classes.toggle}>
-          <Typography
-            align="left"
-            variant="h6"
-            noWrap
-          >
-            Project Fluvius
-          </Typography>
-        </Toolbar>
-        <Toolbar className={classes.title}>
-          <Typography
-            align="left"
-            variant="h6"
-            noWrap
-          >
+        <Box className={classes.pic} alignItems="flex-end">
+          <img class="footer-img" alt="" src={trees}/>
+        </Box>
+        <Box className={classes.toggle} alignItems="left">
+          Project Fluvius
+        </Box>
+        <Box className={classes.title}>
 	  <NavLink exact className={({isActive}) => (isActive ? "active" : "") + " navbar"} to="/">
             Home
           </NavLink>
@@ -80,19 +64,12 @@ export default function Navbar() {
 	  <NavLink className={({isActive}) => (isActive ? "active" : "") + " navbar"} to="/methodology">
             Methodology
           </NavLink>
-          </Typography>
-        </Toolbar>
-        <Toolbar className={classes.toggle}>
-          <Typography
-            align="right"
-            variant="h6"
-            noWrap
-          >
+        </Box>
+        <Box className={classes.toggle} alignItmes="flex-end">
 	  <NavLink className={({isActive}) => (isActive ? "active" : "") + " navbar"} to="/pt_br/inicio">
             PT/BR
           </NavLink>
-          </Typography>
-        </Toolbar>
+        </Box>
     </Box>
   );
 }
