@@ -1,5 +1,5 @@
 # MS-Brazil
-Front-end web application built to replace Ecoshed Flow Photo Explorer
+Front-end web application built to visualize deep learning output of suspended sediment estimates from image chips in Amazon region. 
 
 ## Basic NPM commands
 To run app on local host in terminal type: *npm start*
