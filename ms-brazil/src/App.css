@@ -30,6 +30,10 @@ img.big-img {
     width: 100%;
 }
 
+img.modal-img {
+    height: 80%;
+}
+
 img.footer-img {
     height: 60px;
     margin-left: 10px;
