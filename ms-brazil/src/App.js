@@ -16,6 +16,9 @@ const useStyles = makeStyles((theme) => ({
 	foot: {
           borderTop: '2px solid white', 
 	},
+	centertypography: {
+          margin: '20px', 
+	},
 	modstyle: {
           position: 'absolute',
           top: '50%',
@@ -26,6 +29,8 @@ const useStyles = makeStyles((theme) => ({
           backgroundColor: 'white',
 	  color: 'black',
           border: '20px solid white',
+	  display: "flex",
+	  flexDirection: "column",
 	},
 }));
 //          {({location}) => (String(location.pathname).includes("pt_br") ? <NavbarPT /> : <Navbar /> )} 
@@ -45,20 +50,14 @@ const App = () => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box className={classes.modstyle}>
-	  <Box>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
+        <Box alignItems="center" justifyContent="center" className={classes.modstyle}>
+          <Typography align="center" id="modal-modal-title" variant="h6" component="h2">
             Welcome to the Project Fluvius interactive map! 
           </Typography>
-	  </Box>
-	  <Box>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+          <Typography id="modal-modal-description" className={classes.centertypography}>
             Explore the page to display predictions of suspended sediment over time within various water quality stations in the Itacaiúnas River Basin (BHRI). These estimates of suspended sediment are driven by a deep learning (AI) model using data from Microsoft Planetary Computer and satellite imagery provided by the European Space Agency (Sentinel-2). Below is a diagram of how to navigate the page.
           </Typography>
-	  </Box>
-	  <Box>
             <img class="modal-img" alt="" src={modalgraphic}/>
-	  </Box>
         </Box>
       </Modal>
       <Box flexGrow={1}>
