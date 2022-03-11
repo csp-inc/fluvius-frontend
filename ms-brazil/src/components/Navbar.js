@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import {Box} from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import trees from "../images/itv_tree.png";
@@ -44,6 +44,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Navbar() {
+  const location = useLocation();
+  const port_eqv = (String(location.pathname).includes("about") ? "sobre" : String(location.pathname).includes("methodology") ? "metodologia" : "inicio"  ); 
   const classes = useStyles();
 
   return (
@@ -66,7 +68,7 @@ export default function Navbar() {
           </NavLink>
         </Box>
         <Box className={classes.toggle} alignItmes="flex-end">
-	  <NavLink className={({isActive}) => (isActive ? "active" : "") + " navbar"} to="/pt_br/inicio">
+	  <NavLink className={({isActive}) => (isActive ? "active" : "") + " navbar"} to={"/pt_br/" + String(port_eqv)}>
             PT/BR
           </NavLink>
         </Box>
