@@ -3,7 +3,8 @@ import "../../App.css";
 import Map from "../../components/Map";
 import MapStations from "../../components/MapStations"
 import FluviusBox from "../../components/FluviusBox"
-import {Box} from "@material-ui/core";
+import modalgraphic from "../../images/modal_graphic.png";
+import {Box, Typography, Modal} from "@material-ui/core";
 import {FlyToInterpolator} from 'react-map-gl';
 import { makeStyles } from "@material-ui/core/styles";
 import axios from 'axios';
@@ -12,11 +13,29 @@ const useStyles = makeStyles((theme) => ({
 	homestyle: {
           paddingTop: '15px', 
 	},
+	centertypography: {
+          margin: '20px', 
+	},
+	modstyle: {
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          height: 1000,
+          width: 800,
+          backgroundColor: 'white',
+	  color: 'black',
+          border: '20px solid white',
+	  display: "flex",
+	  flexDirection: "column",
+	},
 }));
 
 
 function Home() {
   const classes = useStyles();
+  const [open, setOpen] = React.useState(true);
+  const handleClose = () => setOpen(false);
   const [allData, setAllData]= useState([])
   const [popupInfo, setPopupInfo] = useState({});
   const [selectValue, setSelectValue] = useState('')
@@ -61,6 +80,22 @@ function Home() {
 
   return (
     <Box className={classes.homestyle}>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box alignItems="center" justifyContent="center" className={classes.modstyle}>
+          <Typography align="center" id="modal-modal-title" variant="h6" component="h2">
+            Welcome to the Project Fluvius interactive map! 
+          </Typography>
+          <Typography id="modal-modal-description" className={classes.centertypography}>
+            Explore the page to display predictions of suspended sediment over time within various water quality stations in the Itacaiúnas River Basin (BHRI). These estimates of suspended sediment are driven by a deep learning (AI) model using data from Microsoft Planetary Computer and satellite imagery provided by the European Space Agency (Sentinel-2). Below is a diagram of how to navigate the page.
+          </Typography>
+            <img class="modal-img" alt="" src={modalgraphic}/>
+        </Box>
+      </Modal>
       <Box display="flex" flexWrap="wrap" flexDirection="row" justifyContent="center" alignItems="center" >
         <Box md={6} sm={12} xs={12} flexGrow={1}>
           <Map allData={allData} popupInfo={popupInfo} setPopupInfo={setPopupInfo} selectValue={selectValue} setSelectValue={setSelectValue} viewport={viewport} setViewport={setViewport} onSelectStation={onSelectStation}/>

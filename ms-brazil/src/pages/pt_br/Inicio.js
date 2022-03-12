@@ -3,7 +3,8 @@ import "../../App.css";
 import Map from "../../components/Map";
 import MapStationsPT from "../../components/MapStationsPT"
 import FluviusBoxPT from "../../components/FluviusBoxPT"
-import {Box} from "@material-ui/core";
+import modalgraphic from "../../images/modal_graphic.png";
+import {Box, Typography, Modal} from "@material-ui/core";
 import {FlyToInterpolator} from 'react-map-gl';
 import { makeStyles } from "@material-ui/core/styles";
 import axios from 'axios';
@@ -12,10 +13,28 @@ const useStyles = makeStyles((theme) => ({
 	homestyle: {
           paddingTop: '15px', 
 	},
+	centertypography: {
+          margin: '20px', 
+	},
+	modstyle: {
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          height: 1000,
+          width: 800,
+          backgroundColor: 'white',
+	  color: 'black',
+          border: '20px solid white',
+	  display: "flex",
+	  flexDirection: "column",
+	},
 }));
 
 function Inicio() {
   const classes = useStyles();
+  const [open, setOpen] = React.useState(true);
+  const handleClose = () => setOpen(false);
   const [allData, setAllData]= useState([])
   const [popupInfo, setPopupInfo] = useState({});
   const [selectValue, setSelectValue] = useState('')
@@ -60,6 +79,22 @@ function Inicio() {
 
   return (
     <Box className={classes.homestyle}>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box alignItems="center" justifyContent="center" className={classes.modstyle}>
+          <Typography align="center" id="modal-modal-title" variant="h6" component="h2">
+            Bem-vindo ao mapa interativo do Projeto Fluvius! 
+          </Typography>
+          <Typography id="modal-modal-description" className={classes.centertypography}>
+            Explore a página para exibir as previsões de sedimentos em suspensão ao longo do tempo em várias estações de qualidade da água na Bacia do Rio Itacaiúnas (BHRI). Essas estimativas de sedimentos suspensos são conduzidas por um modelo de aprendizado profundo (AI) usando dados do Microsoft Planetary Computer e imagens de satélite fornecidas pela Agência Espacial Européia (Sentinel-2). Abaixo está um diagrama de como navegar na página.
+          </Typography>
+            <img class="modal-img" alt="" src={modalgraphic}/>
+        </Box>
+      </Modal>
       <Box display="flex" flexWrap="wrap" flexDirection="row" justifyContent="center" alignItems="center" >
         <Box md={6} sm={12} xs={12} flexGrow={1}>
           <Map allData={allData} popupInfo={popupInfo} setPopupInfo={setPopupInfo} selectValue={selectValue} setSelectValue={setSelectValue} viewport={viewport} setViewport={setViewport} onSelectStation={onSelectStation}/>
