@@ -1,3 +1,4 @@
+import React from "react";
 import "./App.css";
 import Main from "./Main";
 import Navbar from "./components/Navbar";
@@ -15,10 +16,11 @@ const useStyles = makeStyles((theme) => ({
           borderTop: '2px solid white', 
 	},
 }));
-//          {({location}) => (String(location.pathname).includes("pt_br") ? <NavbarPT /> : <Navbar /> )} 
 
 
 const App = () => {
+  const [modal_en_open, modal_en_setOpen] = React.useState(true);
+  const [modal_pt_open, modal_pt_setOpen] = React.useState(true);
   const location = useLocation();
   const portuguese = (String(location.pathname).includes("pt_br") ? true : false ); 
   const classes = useStyles();
@@ -26,12 +28,12 @@ const App = () => {
     <Box display="flex" flexDirection="column" height="100vh">
       <Box flexGrow={1}>
         <Box className={classes.head} height="100%">
-	  {portuguese ? <NavbarPT /> : <Navbar /> }
+	  {portuguese ? <NavbarPT modal_en_setOpen={modal_en_setOpen} modal_pt_setOpen={modal_pt_setOpen}/> : <Navbar modal_en_setOpen={modal_en_setOpen} modal_pt_setOpen={modal_pt_setOpen}/> }
 	</Box>
       </Box>
       <Box flexGrow={18}>
         <Box height="100%">
-	  <Main />
+	  <Main modal_en_open={modal_en_open} modal_en_setOpen={modal_en_setOpen} modal_pt_open={modal_pt_open} modal_pt_setOpen={modal_pt_setOpen}/>
 	</Box>
       </Box>
       <Box flexGrow={1}>

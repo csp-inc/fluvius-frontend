@@ -21,8 +21,8 @@ const useStyles = makeStyles((theme) => ({
           top: '50%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
-          height: 1000,
-          width: 800,
+          height: 800,
+          width: 640,
           backgroundColor: 'white',
 	  color: 'black',
           border: '20px solid white',
@@ -31,10 +31,10 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-function Inicio() {
+function Inicio(props) {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(true);
-  const handleClose = () => setOpen(false);
+  const {modal_pt_open, modal_pt_setOpen} = props;
+  const handleClose = () => modal_pt_setOpen(false);
   const [allData, setAllData]= useState([])
   const [popupInfo, setPopupInfo] = useState({});
   const [selectValue, setSelectValue] = useState('')
@@ -80,7 +80,7 @@ function Inicio() {
   return (
     <Box className={classes.homestyle}>
       <Modal
-        open={open}
+        open={modal_pt_open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
