@@ -3,6 +3,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import {Box, Button} from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import trees from "../images/itv_tree.png";
+import info from "../images/info.png";
 import "./Navbar.css"
 
 const useStyles = makeStyles((theme) => ({
@@ -70,8 +71,9 @@ export default function Navbar(props) {
         <Box className={classes.pic} alignItems="flex-end">
           <img class="footer-img" alt="" src={trees}/>
         </Box>
-        <Box className={classes.modal} alignItems="left">
-	  <Button className={classes.button} onClick={isHome ? handleOpen : {}}>Project Fluvius</Button>
+        <Box className={classes.toggle} alignItems="left">
+	  Project Fluvius
+	  <Button className={classes.button} onClick={isHome ? handleOpen : {}}><img class="info-img" alt="" src={info}/></Button>
         </Box>
         <Box className={classes.title}>
 	  <NavLink className={({isActive}) => (isActive ? "active" : "") + " navbar"} onClick={handleOpen} to="/pt_br/inicio">
