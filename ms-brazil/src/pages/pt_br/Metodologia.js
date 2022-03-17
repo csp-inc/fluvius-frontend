@@ -14,6 +14,9 @@ const useStyles = makeStyles((theme) => ({
     },
     text: {
         fontSize: 20
+    },
+    link: {
+        color:"#5083CC",
     }
   }));
 
