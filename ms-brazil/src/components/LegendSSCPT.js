@@ -39,14 +39,14 @@ export default function LegendSSCPT () {
             </Grid>
 
             <Grid item xs={1}>
-                  <body>Baixa</body>
+                  <body>5</body>
             </Grid>
 
             <Grid item xs={9}>
             </Grid>
 
-            <Grid item xs={1}>
-                  <body>Alta</body>
+            <Grid item xs={2}>
+                  <body>&ge;100</body>
             </Grid>
 
           </Grid>
