@@ -11,21 +11,28 @@ import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
 	homestyle: {
-          paddingTop: '15px', 
+          paddingTop: '1vh', 
+	},
+	modaltitle: {
+          margin: '1vh', 
+	  fontSize: 'calc(30% + 0.75vh + 0.15vw)',
 	},
 	centertypography: {
-          margin: '20px', 
+          margin: '1vh', 
+	  fontSize: 'calc(25% + 0.60vh + 0.10vw)',
 	},
 	modstyle: {
           position: 'absolute',
           top: '50%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
-          height: 800,
-          width: 640,
+          height: 'auto',
+	  maxHeight: '70vh',
+          width: 'auto',
+	  maxWidth: '50vw',
           backgroundColor: 'white',
 	  color: 'black',
-          border: '20px solid white',
+          border: '1vh solid white',
 	  display: "flex",
 	  flexDirection: "column",
 	},
@@ -86,7 +93,7 @@ function Home(props) {
         aria-describedby="modal-modal-description"
       >
         <Box alignItems="center" justifyContent="center" className={classes.modstyle}>
-          <Typography align="center" id="modal-modal-title" variant="h6" component="h2">
+          <Typography align="center" id="modal-modal-title" variant="h6" component="h2" className={classes.modaltitle}>
             Welcome to the Fluvius interactive map! 
           </Typography>
           <Typography id="modal-modal-description" className={classes.centertypography}>

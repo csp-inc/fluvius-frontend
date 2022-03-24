@@ -31,7 +31,10 @@ img.big-img {
 }
 
 img.modal-img {
-    height: 75%;
+    height: auto;
+    max-height: 56vh;
+    width: auto;
+    max-width: 98%;
 }
 
 img.footer-img {
