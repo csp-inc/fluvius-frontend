@@ -55,6 +55,11 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "24px",
     color: "white"
   },
+  fakebutton: {
+    fontSize: "24px",
+    visibility: "hidden",
+    color: "white"
+  },
 }));
 
 export default function Navbar(props) {
@@ -73,7 +78,7 @@ export default function Navbar(props) {
         </Box>
         <Box className={classes.toggle} alignItems="left">
 	  Fluvius
-	  <Button className={classes.button} onClick={isHome ? handleOpen : {}}><img class="info-img" alt="" src={info}/></Button>
+	  {isHome ? <Button className={classes.button} onClick={handleOpen}><img class="info-img" alt="" src={info}/></Button> : <Button className={classes.fakebutton}><img class="info-img" alt="" src={info}/></Button> }
         </Box>
         <Box className={classes.title}>
 	  <NavLink className={({isActive}) => (isActive ? "active" : "") + " navbar"} onClick={handleOpen} to="/pt_br/inicio">
