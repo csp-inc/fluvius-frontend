@@ -87,7 +87,7 @@ function Home(props) {
       >
         <Box alignItems="center" justifyContent="center" className={classes.modstyle}>
           <Typography align="center" id="modal-modal-title" variant="h6" component="h2">
-            Welcome to the Project Fluvius interactive map! 
+            Welcome to the Fluvius interactive map! 
           </Typography>
           <Typography id="modal-modal-description" className={classes.centertypography}>
             Explore the page to display predictions of suspended sediment over time within various water quality stations in the Itacaiúnas River Basin (BHRI). These estimates of suspended sediment are driven by a deep learning (AI) model using data from Microsoft Planetary Computer and satellite imagery provided by the European Space Agency (Sentinel-2). Below is a diagram of how to navigate the page.

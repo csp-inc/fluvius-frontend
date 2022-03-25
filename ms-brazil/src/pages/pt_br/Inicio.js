@@ -87,7 +87,7 @@ function Inicio(props) {
       >
         <Box alignItems="center" justifyContent="center" className={classes.modstyle}>
           <Typography align="center" id="modal-modal-title" variant="h6" component="h2">
-            Bem-vindo ao mapa interativo do Projeto Fluvius! 
+            Bem-vindo ao mapa interativo do Fluvius! 
           </Typography>
           <Typography id="modal-modal-description" className={classes.centertypography}>
             Explore a página para exibir as previsões de sedimentos em suspensão ao longo do tempo em várias estações de qualidade da água na Bacia do Rio Itacaiúnas (BHRI). Essas estimativas de sedimentos suspensos são conduzidas por um modelo de aprendizado profundo (AI) usando dados do Microsoft Planetary Computer e imagens de satélite fornecidas pela Agência Espacial Européia (Sentinel-2). Abaixo está um diagrama de como navegar na página.

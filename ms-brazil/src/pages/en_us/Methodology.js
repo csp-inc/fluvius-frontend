@@ -43,7 +43,7 @@ const Methodology = () => {
 	</Typography>
         <Typography className={classes.text}>
 	  <p>We trained a deep learning model, specifically a <a className={classes.link} href="https://docs.microsoft.com/en-us/azure/machine-learning/concept-deep-learning-vs-machine-learning">Deep Neural Network</a>, using the feature data we extracted for the SSC observations using the PyTorch library in Python. Following the identification of the top model, we extracted image chips for the entire Sentinel-2 L2A archive at each Brazilian water monitoring station to deploy our model and generate time series predictions of SSC.</p>
-	  <p>More information on methods and results can be found in [LINK TO REPORT].</p>
+	  <p>More information on methods and results can be found in <a className={classes.link} href="https://github.com/csp-inc/fluvius/blob/main/docs/fluvius_executive_report_20220324.pdf">our report</a>.</p>
         </Typography>
         <Typography align="center">
           <img class="big-img" alt="" src={amazon_methods}/>

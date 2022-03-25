@@ -43,7 +43,7 @@ const Metodologia = () => {
         </Typography>
         <Typography className={classes.text}>
           <p>Treinamos um modelo de aprendizado profundo, especificamente um <a className={classes.link} href="https://docs.microsoft.com/en-us/azure/machine-learning/concept-deep-learning- vs-machine-learning">Deep Neural Network</a>, usando os dados de recursos que extraímos para as observações CSS usando a biblioteca PyTorch em Python. Após a identificação do modelo superior, extraímos chips de imagem para todo o arquivo Sentinel-2 L2A em cada estação brasileira de monitoramento de água para implantar nosso modelo e gerar previsões de séries temporais de CSS.</p>
-          <p>Mais informações sobre métodos e resultados podem ser encontradas em [LINK PARA RELATÓRIO].</p>
+          <p>Mais informações sobre métodos e resultados podem ser encontradas em <a className={classes.link} href="https://github.com/csp-inc/fluvius/blob/main/docs/fluvius_executive_report_20220324.pdf">nosso relatório</a>.</p>
         </Typography>      <Typography align="center">
         <img class="big-img" alt="" src={amazon_methods}/>
       </Typography>
