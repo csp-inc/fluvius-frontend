@@ -3,7 +3,7 @@ import "../../App.css";
 import Map from "../../components/Map";
 import MapStationsPT from "../../components/MapStationsPT"
 import FluviusBoxPT from "../../components/FluviusBoxPT"
-import modalgraphic from "../../images/modal_graphic.png";
+import modalgraphic from "../../images/modal_graphic_pt.png";
 import {Box, Typography, Modal} from "@material-ui/core";
 import {FlyToInterpolator} from 'react-map-gl';
 import { makeStyles } from "@material-ui/core/styles";
