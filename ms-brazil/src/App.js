@@ -11,9 +11,21 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
 	head: {
           borderBottom: '2px solid white', 
+	  position: 'sticky',
+	  top: '0px',
+	  zIndex: 1100,
+	  backgroundColor: "black",
+	},
+	main: {
+	  position: 'relative',
+	  zIndex: 900,
 	},
 	foot: {
           borderTop: '2px solid white', 
+	  position: 'sticky',
+	  bottom: '0px',
+	  zIndex: 1100,
+	  backgroundColor: "black",
 	},
 }));
 
@@ -25,22 +37,16 @@ const App = () => {
   const portuguese = (String(location.pathname).includes("pt_br") ? true : false ); 
   const classes = useStyles();
   return (
-    <Box display="flex" flexDirection="column" height="100vh">
-      <Box flexGrow={1}>
-        <Box className={classes.head} height="100%">
+    <Box>
+        <Box className={classes.head} height="8%">
 	  {portuguese ? <NavbarPT modal_en_setOpen={modal_en_setOpen} modal_pt_setOpen={modal_pt_setOpen}/> : <Navbar modal_en_setOpen={modal_en_setOpen} modal_pt_setOpen={modal_pt_setOpen}/> }
 	</Box>
-      </Box>
-      <Box flexGrow={18}>
-        <Box height="100%">
+        <Box className={classes.main} height="84%">
 	  <Main modal_en_open={modal_en_open} modal_en_setOpen={modal_en_setOpen} modal_pt_open={modal_pt_open} modal_pt_setOpen={modal_pt_setOpen}/>
 	</Box>
-      </Box>
-      <Box flexGrow={1}>
-        <Box className={classes.foot} display="flex" justifyContent="right" alignItems="flex-end" height="100%">
+        <Box className={classes.foot} display="flex" justifyContent="right" alignItems="flex-end" height="8%">
 	    <Footer />
 	</Box>
-      </Box>
     </Box>
   );
 }

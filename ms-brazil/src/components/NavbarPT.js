@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     flexGrow: 1,
-    zIndex: 50
+    backgroundColor: "black",
   },
   title: {
     flexGrow: 15,
