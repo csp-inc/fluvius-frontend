@@ -9,17 +9,17 @@ import "./Navbar.css"
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
-    flexGrow: 1,
     backgroundColor: "black",
   },
+
   title: {
     flexGrow: 15,
     display: "flex",
     [theme.breakpoints.up("sm")]: {
       display: "block",
     },
-    fontSize: "24px",
-    paddingTop: "18px",
+    fontSize: "2vh",
+    paddingTop: "1vh",
     color: "white"
   },
   pic: {
@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up("sm")]: {
       display: "block",
     },
-    fontSize: "24px",
+    fontSize: "2vh",
     color: "white"
   },
   modal: {
@@ -46,17 +46,17 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up("sm")]: {
       display: "block",
     },
-    fontSize: "24px",
-    paddingTop: "18px",
+    fontSize: "2vh",
+    paddingTop: "1vh",
     alignItems: "flex-end",
     color: "white"
   },
   button: {
-    fontSize: "24px",
+    fontSize: "2vh",
     color: "white"
   },
   fakebutton: {
-    fontSize: "24px",
+    fontSize: "2vh",
     visibility: "hidden",
     color: "white"
   },
@@ -74,7 +74,7 @@ export default function Navbar(props) {
   return (
     <Box className={classes.root}>
         <Box className={classes.pic} alignItems="flex-end">
-          <img class="footer-img" alt="" src={trees}/>
+          <img class="header-img" alt="" src={trees}/>
         </Box>
         <Box className={classes.toggle} alignItems="left">
 	  Fluvius

@@ -17,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
 	  backgroundColor: "black",
 	},
 	main: {
+	  minHeight: '88vh',
 	  position: 'relative',
 	  zIndex: 900,
 	},
@@ -38,13 +39,13 @@ const App = () => {
   const classes = useStyles();
   return (
     <Box>
-        <Box className={classes.head} height="8%">
+        <Box className={classes.head} height="5vh">
 	  {portuguese ? <NavbarPT modal_en_setOpen={modal_en_setOpen} modal_pt_setOpen={modal_pt_setOpen}/> : <Navbar modal_en_setOpen={modal_en_setOpen} modal_pt_setOpen={modal_pt_setOpen}/> }
 	</Box>
-        <Box className={classes.main} height="84%">
+        <Box className={classes.main} height="auto">
 	  <Main modal_en_open={modal_en_open} modal_en_setOpen={modal_en_setOpen} modal_pt_open={modal_pt_open} modal_pt_setOpen={modal_pt_setOpen}/>
 	</Box>
-        <Box className={classes.foot} display="flex" justifyContent="right" alignItems="flex-end" height="8%">
+        <Box className={classes.foot} display="flex" justifyContent="right" alignItems="flex-end" height="6vh">
 	    <Footer />
 	</Box>
     </Box>
