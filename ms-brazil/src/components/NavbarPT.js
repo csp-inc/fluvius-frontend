@@ -3,7 +3,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import {Box, Button} from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import trees from "../images/itv_tree.png";
-import info from "../images/info.svg";
+import info from "../images/global_i.png";
 import "./Navbar.css"
 
 const useStyles = makeStyles((theme) => ({
@@ -39,6 +39,17 @@ const useStyles = makeStyles((theme) => ({
     },
     paddingTop: "10px",
     alignItems: "flex-end",
+  },
+  lefttoggle: {
+    flexGrow: 3,
+    display: "flex",
+    [theme.breakpoints.up("sm")]: {
+      display: "block",
+    },
+    fontSize: "2vh",
+    paddingTop: "0.25vh",
+    alignItems: "flex-end",
+    color: "white"
   },
   toggle: {
     flexGrow: 3,
@@ -76,7 +87,7 @@ export default function Navbar(props) {
         <Box className={classes.pic} alignItems="flex-end">
           <img class="header-img" alt="" src={trees}/>
         </Box>
-        <Box className={classes.toggle} alignItems="left">
+        <Box className={classes.lefttoggle} alignItems="left">
 	  Fluvius
 	  {isHome ? <Button className={classes.button} onClick={handleOpen}><img class="info-img" alt="" src={info}/></Button> : <Button className={classes.fakebutton}><img class="info-img" alt="" src={info}/></Button> }
         </Box>

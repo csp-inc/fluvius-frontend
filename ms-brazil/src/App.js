@@ -39,7 +39,7 @@ const App = () => {
   const classes = useStyles();
   return (
     <Box>
-        <Box className={classes.head} height="5vh">
+        <Box className={classes.head} height="5.25vh">
 	  {portuguese ? <NavbarPT modal_en_setOpen={modal_en_setOpen} modal_pt_setOpen={modal_pt_setOpen}/> : <Navbar modal_en_setOpen={modal_en_setOpen} modal_pt_setOpen={modal_pt_setOpen}/> }
 	</Box>
         <Box className={classes.main} height="auto">
