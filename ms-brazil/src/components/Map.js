@@ -56,7 +56,7 @@ const Map = (props) => {
   const onSelectStation = props.onSelectStation
 
   React.useEffect(() => {
-    axios.get('http://dev.virtualearth.net/REST/V1/Imagery/Metadata/Aerial?output=json&include=ImageryProviders&key=AlYwW4NFHWBCGkGWAQ3qeuTv6ry7Dge7um3o9cKEu56Hio2DYkZFtbIqrxRR8l9l')
+    axios.get('https://dev.virtualearth.net/REST/V1/Imagery/Metadata/Aerial?output=json&include=ImageryProviders&key=AlYwW4NFHWBCGkGWAQ3qeuTv6ry7Dge7um3o9cKEu56Hio2DYkZFtbIqrxRR8l9l')
     .then(res=> {
 	let bingLoc = res.data.resourceSets[0].resources[0].imageUrl;
 	let bingSubdomains = res.data.resourceSets[0].resources[0].imageUrlSubdomains;
