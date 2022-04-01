@@ -101,7 +101,7 @@ const Map = (props) => {
             closeOnClick={false}
             onOpen={setPopupInfo}
           >
-            <StationInfo info={popupInfo.site_name} />
+            <StationInfo name={popupInfo.site_name} river={popupInfo.nearest_river} />
           </Popup>
         )}
 

@@ -97,6 +97,10 @@ const MapStationsPT = (props) => {
               <hr></hr>
               Longitude: &nbsp;&nbsp;&nbsp;<b>{popupInfo.Longitude}</b>
               <hr></hr>
+              Cidade Mais Próxima: &nbsp;&nbsp;&nbsp;<b>{popupInfo.nearest_city}</b>
+              <hr></hr>
+              Rio Mais Próximo: &nbsp;&nbsp;&nbsp;<b>{popupInfo.nearest_river}</b>
+              <hr></hr>
               Dono da estação:  &nbsp;&nbsp;&nbsp;<b>{popupInfo.region}</b>
               <hr></hr>
           </Typography>

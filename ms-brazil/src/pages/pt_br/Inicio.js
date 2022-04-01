@@ -75,7 +75,7 @@ function Inicio(props) {
   }, [popupInfo])
 
   useEffect(() => {
-    axios.get('https://fluviusdata.blob.core.windows.net/app/all_data_v4.json')
+    axios.get('https://fluviusdata.blob.core.windows.net/app/all_data_v5.json')
     .then(res=> {
         setAllData(res.data);
     })
