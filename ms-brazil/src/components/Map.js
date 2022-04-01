@@ -1,5 +1,5 @@
 import * as React from 'react';
-import MapGL, { Popup, NavigationControl, FullscreenControl, ScaleControl, GeolocateControl} from 'react-map-gl';
+import MapGL, { Popup, NavigationControl, FullscreenControl, ScaleControl, GeolocateControl, AttributionControl} from 'react-map-gl';
 import mapboxgl from "mapbox-gl";
 import axios from 'axios';
 
@@ -35,6 +35,12 @@ const navStyle = {
 const scaleControlStyle = {
   bottom: 36,
   left: 0,
+  padding: '10px'
+};
+
+const attributionStyle = {
+  bottom: 0,
+  right: 0,
   padding: '10px'
 };
 
@@ -77,6 +83,7 @@ const Map = (props) => {
         width="100%"
         height="575px"
         mapStyle={mapStyle}
+	attributionControl={false}
         onViewportChange={setViewport}
         mapboxApiAccessToken={TOKEN}
       >
@@ -100,6 +107,7 @@ const Map = (props) => {
         <FullscreenControl style={fullscreenControlStyle} />
         <NavigationControl style={navStyle} />
         <ScaleControl style={scaleControlStyle} />
+	<AttributionControl style={attributionStyle} compact={true} customAttribution="© Microsoft 2022" />
 
       </MapGL> : null }
 
