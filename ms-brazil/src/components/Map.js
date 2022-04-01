@@ -75,6 +75,8 @@ const Map = (props) => {
     mapStyle.sources['mapbox://mapbox.satellite'].tiles = tiles;
     console.log(mapStyle.sources['mapbox://mapbox.satellite'].tiles);
   }
+
+  const thisyear = "© Microsoft " + String(new Date().getFullYear());
   return (
     <>
       {mapStyle.sources['mapbox://mapbox.satellite'].tiles[0] ?
@@ -107,7 +109,7 @@ const Map = (props) => {
         <FullscreenControl style={fullscreenControlStyle} />
         <NavigationControl style={navStyle} />
         <ScaleControl style={scaleControlStyle} />
-	<AttributionControl style={attributionStyle} compact={true} customAttribution="© Microsoft 2022" />
+	<AttributionControl style={attributionStyle} compact={true} customAttribution={thisyear} />
 
       </MapGL> : null }
 
