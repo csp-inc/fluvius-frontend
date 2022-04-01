@@ -1,6 +1,7 @@
 import * as React from 'react';
 import MapGL, { Popup, NavigationControl, FullscreenControl, ScaleControl, GeolocateControl} from 'react-map-gl';
 import mapboxgl from "mapbox-gl";
+import axios from 'axios';
 
 //Components
 import Pins from './MapPins';
@@ -44,9 +45,27 @@ const Map = (props) => {
   const setSelectValue = props.setSelectValue
   const viewport = props.viewport
   const setViewport = props.setViewport
+  const [bingLoc, setBingLoc]= React.useState([])
+  const [bingSubdomains, setBingSubdomains]= React.useState([])
 
   const onSelectStation = props.onSelectStation
 
+  React.useEffect(() => {
+    axios.get('http://dev.virtualearth.net/REST/V1/Imagery/Metadata/Aerial?output=json&include=ImageryProviders&key=AlYwW4NFHWBCGkGWAQ3qeuTv6ry7Dge7um3o9cKEu56Hio2DYkZFtbIqrxRR8l9l')
+    .then(res=> {
+        setBingLoc(res.data.resourceSets[0].resources[0].imageUrl);
+        setBingSubdomains(res.data.resourceSets[0].resources[0].imageUrlSubdomains);
+    })
+    .catch(err => {
+        console.log(err);
+    })
+}, [])
+
+  console.log('bingLoc');
+  console.log(bingLoc);
+  console.log('bingSubdomains');
+  console.log(bingSubdomains);
+  console.log(mapStyle.sources);
   return (
     <>
       <MapGL
