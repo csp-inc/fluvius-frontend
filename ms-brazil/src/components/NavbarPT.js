@@ -46,9 +46,8 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up("sm")]: {
       display: "block",
     },
-    fontSize: "2vh",
-    paddingTop: "0.25vh",
-    alignItems: "flex-end",
+    fontSize: "4vh",
+    marginTop: "-0.8vh",
     color: "white"
   },
   toggle: {
@@ -87,7 +86,7 @@ export default function Navbar(props) {
         <Box className={classes.pic} alignItems="flex-end">
           <img class="header-img" alt="" src={trees}/>
         </Box>
-        <Box className={classes.lefttoggle} alignItems="left">
+        <Box className={classes.lefttoggle}>
 	  Fluvius
 	  {isHome ? <Button className={classes.button} onClick={handleOpen}><img class="info-img" alt="" src={info}/></Button> : <Button className={classes.fakebutton}><img class="info-img" alt="" src={info}/></Button> }
         </Box>
