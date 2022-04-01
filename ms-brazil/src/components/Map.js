@@ -62,7 +62,7 @@ const Map = (props) => {
 	let bingSubdomains = res.data.resourceSets[0].resources[0].imageUrlSubdomains;
 	if (bingLoc && bingSubdomains) {
 	setTiles(bingSubdomains.map(
-		sd => (bingLoc.replace('{subdomain}', sd))
+		sd => (bingLoc.replace('{subdomain}', sd).replace('http','https'))
 	));
 	}
     })
