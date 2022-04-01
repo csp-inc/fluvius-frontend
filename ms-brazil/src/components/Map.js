@@ -45,29 +45,33 @@ const Map = (props) => {
   const setSelectValue = props.setSelectValue
   const viewport = props.viewport
   const setViewport = props.setViewport
-  const [bingLoc, setBingLoc]= React.useState([])
-  const [bingSubdomains, setBingSubdomains]= React.useState([])
+  const [tiles, setTiles]= React.useState([])
 
   const onSelectStation = props.onSelectStation
 
   React.useEffect(() => {
     axios.get('http://dev.virtualearth.net/REST/V1/Imagery/Metadata/Aerial?output=json&include=ImageryProviders&key=AlYwW4NFHWBCGkGWAQ3qeuTv6ry7Dge7um3o9cKEu56Hio2DYkZFtbIqrxRR8l9l')
     .then(res=> {
-        setBingLoc(res.data.resourceSets[0].resources[0].imageUrl);
-        setBingSubdomains(res.data.resourceSets[0].resources[0].imageUrlSubdomains);
+	let bingLoc = res.data.resourceSets[0].resources[0].imageUrl;
+	let bingSubdomains = res.data.resourceSets[0].resources[0].imageUrlSubdomains;
+	if (bingLoc && bingSubdomains) {
+	setTiles(bingSubdomains.map(
+		sd => (bingLoc.replace('{subdomain}', sd))
+	));
+	}
     })
     .catch(err => {
         console.log(err);
     })
 }, [])
 
-  console.log('bingLoc');
-  console.log(bingLoc);
-  console.log('bingSubdomains');
-  console.log(bingSubdomains);
-  console.log(mapStyle.sources);
+  if (tiles) {
+    mapStyle.sources['mapbox://mapbox.satellite'].tiles = tiles;
+    console.log(mapStyle.sources['mapbox://mapbox.satellite'].tiles);
+  }
   return (
     <>
+      {mapStyle.sources['mapbox://mapbox.satellite'].tiles[0] ?
       <MapGL
         {...viewport}
         width="100%"
@@ -97,10 +101,7 @@ const Map = (props) => {
         <NavigationControl style={navStyle} />
         <ScaleControl style={scaleControlStyle} />
 
-        {/* <MapTitle title={'Map Title (make it station name?)'}/> */}
-        {/* <ControlPanel /> */}
-
-      </MapGL>
+      </MapGL> : null }
 
     </>
   );

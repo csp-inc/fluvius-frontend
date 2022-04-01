@@ -209,10 +209,10 @@
   "sources": {
     "mapbox://mapbox.satellite": {
       "tiles": [
-	      "http://ak.dynamic.t0.tiles.virtualearth.net/comp/ch/{quadkey}?mkt=en-US&it=A,G,L&og=1806&n=z",
-	      "http://ak.dynamic.t1.tiles.virtualearth.net/comp/ch/{quadkey}?mkt=en-US&it=A,G,L&og=1806&n=z",
-	      "http://ak.dynamic.t2.tiles.virtualearth.net/comp/ch/{quadkey}?mkt=en-US&it=A,G,L&og=1806&n=z",
-	      "http://ak.dynamic.t3.tiles.virtualearth.net/comp/ch/{quadkey}?mkt=en-US&it=A,G,L&og=1806&n=z"
+	      "",
+	      "",
+	      "",
+	      ""
       ],
       "type": "raster",
       "tileSize": 256
