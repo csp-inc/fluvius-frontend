@@ -15,11 +15,11 @@ const useStyles = makeStyles((theme) => ({
 	},
 	modaltitle: {
           margin: '1vh', 
-	  fontSize: 'calc(30% + 0.75vh + 0.15vw)',
+	  fontSize: 'calc(40% + 0.85vh + 0.05vw)',
 	},
 	centertypography: {
           margin: '1vh', 
-	  fontSize: 'calc(25% + 0.60vh + 0.10vw)',
+	  fontSize: 'calc(35% + 0.70vh + 0.05vw)',
 	},
 	modstyle: {
           position: 'absolute',
@@ -27,9 +27,9 @@ const useStyles = makeStyles((theme) => ({
           left: '50%',
           transform: 'translate(-50%, -50%)',
           height: 'auto',
-	  maxHeight: '70vh',
+	  maxHeight: '80vh',
           width: 'auto',
-	  maxWidth: '50vw',
+	  maxWidth: '70vw',
           backgroundColor: 'white',
 	  color: 'black',
           border: '1vh solid white',
