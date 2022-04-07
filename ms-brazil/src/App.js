@@ -45,7 +45,7 @@ const App = () => {
         <Box className={classes.main} height="auto">
 	  <Main modal_en_open={modal_en_open} modal_en_setOpen={modal_en_setOpen} modal_pt_open={modal_pt_open} modal_pt_setOpen={modal_pt_setOpen}/>
 	</Box>
-        <Box className={classes.foot} display="flex" justifyContent="right" alignItems="flex-end" height="6vh">
+        <Box className={classes.foot} display="flex" justifyContent="right" alignItems="center" height="6vh">
 	    <Footer />
 	</Box>
     </Box>

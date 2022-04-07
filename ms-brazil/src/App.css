@@ -38,8 +38,9 @@ img.modal-img {
 }
 
 img.footer-img {
-    height: 5.5vh;
+    height: 4vh;
     margin-left: 10px;
+    margin-right: 30px;
 }
 
 img.header-img {
