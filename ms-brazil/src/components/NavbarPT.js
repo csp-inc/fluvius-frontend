@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
       display: "block",
     },
     fontSize: "2vh",
-    paddingTop: "1vh",
+    paddingTop: "1.5vh",
     color: "white"
   },
   pic: {
@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
       display: "block",
     },
     fontSize: "4vh",
-    marginTop: "-0.8vh",
+    marginTop: "0.2vh",
     color: "white"
   },
   toggle: {
@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
       display: "block",
     },
     fontSize: "2vh",
-    paddingTop: "1vh",
+    paddingTop: "1.5vh",
     alignItems: "flex-end",
     color: "white"
   },
