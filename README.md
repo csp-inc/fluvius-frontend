@@ -15,4 +15,5 @@ To deploy:
 To save code to GitHub, can run the usual Git commands in local terminal.
 
 ## Azure Extension in VS Code
-- Make sure you you install the app service and the storage! Otherwise the app will not run.
+- Make sure you install the Azure Tools extension in VSCode! Otherwise the app will not run.
+- If you are deploying from a Linux OS, ensure that you have the `libsecret-1-0` package installed in order for AZCopy to work properly underneath the hood.
